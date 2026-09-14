@@ -122,9 +122,6 @@
   :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
   @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 </style>
-</head>
-<body>
-
 
 <header class="hero">
   <div class="wrap">
@@ -149,6 +146,7 @@
   <a href="#proj">项目管理</a>
   <a href="#data">数据模型</a>
   <a href="#gov">资源管控</a>
+  <a href="#ops">合作·结算·资产</a>
   <a href="#map">研学地图</a>
   <a href="#cert">证书发证验真</a>
   <a href="#road">分阶段路线</a>
@@ -192,7 +190,7 @@
           <li><b>内容/后台</b>：Payload CMS（自带后台、RBAC、REST/GraphQL）</li>
           <li><b>数据库</b>：PostgreSQL（独立实例，数据驻留新加坡）</li>
           <li><b>AI（初审 + 项目模版化）</b>：<b>单独部署一套 JE Agent</b>（用 JE 代码，独立实例/数据/运行时）</li>
-          <li><b>地图</b>：研学地图组件（服务商见 §12 待定）</li>
+          <li><b>地图</b>：研学地图组件（服务商见 §13 待定）</li>
           <li><b>收款</b>：Stripe（<b>协会名下账户</b>）</li>
         </ul>
       </div>
@@ -254,7 +252,7 @@ flowchart LR
         <p style="font-size:13px;color:var(--ink-soft);margin-top:8px"><b>赛事/交流扩展角色：</b>评审专家（评审阅卷，<b>作文老师主导</b>）、指导老师/领队、学生/家长、合作机构（赛事方）——各自权限并入平台 RBAC。</p>
       </div>
     </div>
-    <div class="note gold"><div><b>后续补充（规划位）。</b> ① 会员<strong>证书与认证</strong>：会员/机构认证徽章、协会统一发证与验真，与 §10 证书中枢打通；② <strong>会员权益体系</strong>：分层权益、资源优先对接、活动/研学折扣、专属内容与线下礼遇等——将在后续版本细化。</div></div>
+    <div class="note gold"><div><b>后续补充（规划位）。</b> ① 会员<strong>证书与认证</strong>：会员/机构认证徽章、协会统一发证与验真，与 §11 证书中枢打通；② <strong>会员权益体系</strong>：分层权益、资源优先对接、活动/研学折扣、专属内容与线下礼遇等——将在后续版本细化。</div></div>
   </section>
 
   <section id="mod">
@@ -267,12 +265,14 @@ flowchart LR
         <tr><td class="rowhead">项目管理</td><td>参照官网 7 大项目细化；<b>JE Agent 模版化/可复制</b>整个项目管理过程（§06）</td><td class="c"><span class="pill p-done">本期</span></td></tr>
         <tr><td class="rowhead">赛事与评审</td><td>科技赛事出海运营（ICC/WRC）+ <b>AI 评审阅卷中枢</b>（作文以老师为主、AI 辅助）；报名/备赛/作品/评审/证书（§06）</td><td class="c"><span class="pill p-done">本期·新增</span></td></tr>
         <tr><td class="rowhead">资源管理 + 对接</td><td>四类资源；目录+申请 与 双向供需 结合；分类型审核</td><td class="c"><span class="pill p-done">本期</span></td></tr>
-        <tr><td class="rowhead">研学地图 ★</td><td>地图浏览研学产品 → 报名 → 缴费 → 电子导览（§09）</td><td class="c"><span class="pill p-done">本期</span></td></tr>
+        <tr><td class="rowhead">研学地图 ★</td><td>地图浏览研学产品 → 报名 → 缴费 → 电子导览（§10）</td><td class="c"><span class="pill p-done">本期</span></td></tr>
         <tr><td class="rowhead">出版 / 图书</td><td>出版物·作品集（作文大赛结集）、书目/阅读清单（读书会）、在线图书馆</td><td class="c"><span class="pill p-done">本期·新纳入</span></td></tr>
         <tr><td class="rowhead">会员 / 注册</td><td>个人与机构、认证/非认证、角色与资料</td><td class="c"><span class="pill p-done">本期</span></td></tr>
         <tr><td class="rowhead">活动 + 直播</td><td>活动发布报名；凭发布的链接进入直播</td><td class="c"><span class="pill p-done">本期</span></td></tr>
-        <tr><td class="rowhead">证书发证与验证</td><td><b>协会统一发证中枢</b>：唯一编号+二维码防伪，公开验真；<b>山海同文证书也经此发出</b>（§10）</td><td class="c"><span class="pill p-done">本期·新纳入</span></td></tr>
-        <tr><td class="rowhead">捐赠供需</td><td>资金/图书物资/公益课时师资/设备——<b>归入「公益」项目，不单列</b>（§06）</td><td class="c"><span class="pill p-done">本期</span></td></tr>      </tbody>
+        <tr><td class="rowhead">证书发证与验证</td><td><b>协会统一发证中枢</b>：唯一编号+二维码防伪，公开验真；<b>山海同文证书也经此发出</b>（§11）</td><td class="c"><span class="pill p-done">本期·新纳入</span></td></tr>
+        <tr><td class="rowhead">捐赠供需</td><td>资金/图书物资/公益课时师资/设备——<b>归入「公益」项目，不单列</b>（§06）</td><td class="c"><span class="pill p-done">本期</span></td></tr>
+        <tr><td class="rowhead">合作 · 采购 · 结算</td><td>供应商全生命周期（含<b>旅行社地接</b>）、<b>在线签约 + 法务审核</b>、请款<b>分级授权</b>与结算、应付账龄 / 预算执行（§09）</td><td class="c"><span class="pill p-done">本期·新增</span></td></tr>
+        <tr><td class="rowhead">资产管理</td><td>有形（折旧 / 盘点 / 处置）+ 无形（权属 / 摊销 / <b>对外授权</b> / 续展提醒）资产台账（§09）</td><td class="c"><span class="pill p-done">本期·新增</span></td></tr>      </tbody>
     </table></div>
   </section>
 
@@ -327,7 +327,7 @@ flowchart LR
       <tbody>
         <tr><td class="rowhead">全球百名校长中国行</td><td>以校长为桥，连接全球学校与中国</td><td>已办 3 届 · 180 位校长 / 34 国 · 下届安徽或杭州—绍兴</td></tr>
         <tr><td class="rowhead">世界中文作文大赛</td><td>中文链接世界，写作连接未来</td><td>已办 2 届 · 30+ 国 / 100+ 校 · 小学·初中·高中</td></tr>
-        <tr><td class="rowhead">国际文化研学</td><td>从「写中国」到「行走中国」</td><td>线路 西安·安徽·潮汕 · 专家导学（对接 §09 研学地图）</td></tr>
+        <tr><td class="rowhead">国际文化研学</td><td>从「写中国」到「行走中国」</td><td>线路 西安·安徽·潮汕 · 专家导学（对接 §10 研学地图）</td></tr>
         <tr><td class="rowhead">全球华文校长论坛</td><td>面向国际中文教育未来的高端论坛</td><td>最近一届 郑州 2025.4 · 校长与教育领导者</td></tr>
         <tr><td class="rowhead">全球中文在线培训</td><td>老师主导、AI 辅助，为最难联网的课堂而建</td><td>尼日利亚试点 · 直播/录播/离线 <span class="pill p-no" style="margin-left:4px">产品归山海同文·平台仅登记</span></td></tr>
         <tr><td class="rowhead">未来书院</td><td>中学为体，西学为用，面向未来</td><td>四大板块 · 面向全球青少年 · 体系建设中</td></tr>
@@ -387,6 +387,10 @@ flowchart TD
   Proj --> Pub["出版物/书目"]
   Proj --> Cert["证书 Certificate<br/>编号+二维码"]
   Proj --> Don["捐赠 供/需<br/>(公益项目内)"]
+  Org --> Vend["合作单位/供应商<br/>KYC·评级"]
+  Vend --> Ct["合同 Contract<br/>法务·电子签"]
+  Ct --> PR["请款 PayRequest<br/>分级授权"] --> Stl["结算 Settlement"]
+  Asset["资产 Asset<br/>有形+无形"] --> Amrt["折旧/摊销·对外授权"]
     </pre>
     <h3>资源 · 各类型专有字段</h3>
     <div class="twrap"><table>
@@ -415,6 +419,24 @@ flowchart TD
         </ul>
       </div>
     </div>
+    <div class="grid2" style="margin-top:14px">
+      <div>
+        <h3>合作 / 采购 / 结算</h3>
+        <ul>
+          <li><b>Vendor 合作单位</b>：类别、KYC / 资质、银行信息（受控）、评级、黑白名单</li>
+          <li><b>Contract 合同</b>：对方、类型、金额、期限、法务状态、签署状态、版本、到期</li>
+          <li><b>PayRequest 请款</b>：事由、关联合同、金额、预算科目、<b>审批链（分级授权）</b>、发票 / 验收</li>
+          <li><b>Settlement 结算</b>：付款方式、账期、凭证；应付账龄</li>
+        </ul>
+      </div>
+      <div>
+        <h3>资产（有形 / 无形）</h3>
+        <ul>
+          <li><b>Asset 有形</b>：编号、类别、原值、折旧、净值、保管人、位置、状态、盘点 / 处置</li>
+          <li><b>Intangible 无形</b>：类别（商标 / 著作权 / 软著 / 域名 / 课程 IP / 证书体系 / 数据）、权属、摊销、有效期 / 续展、对外授权</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section id="gov">
@@ -431,8 +453,59 @@ flowchart TD
     <div class="note warn"><div><b>涉资金红线。</b> 缴费与捐赠收款账户须在协会名下；费率、价格、支付通道按区域实测后确定，规划阶段不写死数字。</div></div>
   </section>
 
+  <section id="ops">
+    <h2><span class="snum">09</span>协会运营中枢 · 合作 / 采购 / 结算与资产</h2>
+    <p class="sub">以顶级协会财务与治理口径，管住「钱、合同、资产」三条线，与内容 / 研学 / 赛事各业务线打通，全程留痕可审。</p>
+
+    <h3>A · 合作单位与供应商（全生命周期）</h3>
+    <ul>
+      <li><b>入库与 KYC</b>：分类（研学基地 / <b>旅行社地接</b> / 交通物流 / 印刷出版 / 讲师劳务 / 场地会展 / 技术服务）、资质与银行信息核验、反舞弊与黑白名单、评级。</li>
+      <li><b>在线签约（CLM）</b>：合同模板库起草 → <b>法务审核</b>（付款 / 违约 / 知识产权 / 争议管辖，风险标注 + 会签）→ 双方<b>电子签 / 用印</b> → 版本归档与到期提醒。</li>
+      <li><b>采购到付款（P2P）</b>：立项预算 → 询价比价 → 合同 → 履约验收 → <b>请款</b>（发票 / 验收「三单匹配」）。</li>
+    </ul>
+
+    <h3>B · 请款、分级授权与结算</h3>
+    <div class="twrap"><table>
+      <thead><tr><th>金额区间（示例阈值）</th><th>审批权限（分级授权）</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">≤ S$5k</td><td>部门负责人</td></tr>
+        <tr><td class="rowhead">≤ S$20k</td><td>财务负责人</td></tr>
+        <tr><td class="rowhead">≤ S$100k</td><td>秘书长</td></tr>
+        <tr><td class="rowhead">&gt; S$100k</td><td>会长 / 理事会</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>结算与出纳</b>：银行转账 / Stripe Payout；账期（验收后 T+N）；付款凭证自动归档。</li>
+      <li><b>财务视图</b>：应付账龄（AP Aging）、按成本中心 / 项目的预算执行、现金流；与 §11 证书、§10 研学的收入侧对账。</li>
+      <li><b>职责分离</b>：经办 / 审批 / 出纳三权分立；全链审计留痕（见 §08）。</li>
+    </ul>
+
+    <h3>C · 资产管理（有形 + 无形）</h3>
+    <div class="grid2">
+      <div>
+        <h3>有形资产</h3>
+        <ul>
+          <li>固定资产台账：研学器材 / 办公设备 / 内容制作 / 图书实物。</li>
+          <li>采购入册 → <b>折旧（直线法）</b> → 盘点（二维码标签、账实核对）→ 处置报废。</li>
+          <li>保管人 / 位置 / 使用状态（在用 / 闲置 / 维修 / 报废）。</li>
+        </ul>
+      </div>
+      <div>
+        <h3>无形资产</h3>
+        <ul>
+          <li>商标 / 著作权 / 软件著作权 / 域名 / 课程 IP / 证书体系 / 数据资产。</li>
+          <li><b>权属登记</b> + 摊销；商标 / 域名<b>续展到期提醒</b>。</li>
+          <li><b>对外授权许可</b>（课程 IP、证书体系授权合作校）——形成许可收入。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note"><div><b>与业务线打通。</b> 研学地接（旅行社）、赛事场地、内容印刷等采购经本中枢签约与结算；无形资产（课程 IP / 证书体系）对外授权与 §11 证书中枢联动。</div></div>
+    <p class="sub"><span class="pill p-todo">待技术负责人确定</span> 具体审批阈值、账期、折旧年限与授权计费口径，按协会财务制度与区域实测后确定，规划阶段不写死数字。</p>
+  </section>
+
   <section id="map">
-    <h2><span class="snum">09</span>研学地图</h2>
+    <h2><span class="snum">10</span>研学地图</h2>
     <p class="sub">把研学从"列表"升级为"地图"——平台亮点，直接承接「国际文化研学」项目（西安/安徽/潮汕）。</p>
     <pre class="mermaid">
 flowchart LR
@@ -456,7 +529,7 @@ flowchart LR
   </section>
 
   <section id="cert">
-    <h2><span class="snum">10</span>证书发证与验证</h2>
+    <h2><span class="snum">11</span>证书发证与验证</h2>
     <p class="sub">协会证书的发放与验真都在本平台——它是<strong>协会统一发证与验真中枢</strong>；<strong>山海同文的结业证书也经此平台发出</strong>（山海同文作为消费方经接口发证）。</p>
     <div class="grid2">
       <div>
@@ -481,7 +554,7 @@ flowchart LR
   </section>
 
   <section id="road">
-    <h2><span class="snum">11</span>分阶段路线</h2>
+    <h2><span class="snum">12</span>分阶段路线</h2>
     <p class="sub">地基先行；内容中枢与项目优先（直接支撑官网），研学地图为亮点里程碑。</p>
     <div class="road">
       <div class="phase"><div class="tag">P0<small>地基</small></div><div><h4>骨架与身份</h4><p>新仓库 + Payload CMS + 认证 + RBAC/可见性 + 会员/机构 + 认证流程。可本地运行。</p></div></div>
@@ -493,7 +566,7 @@ flowchart LR
   </section>
 
   <section id="deploy">
-    <h2><span class="snum">12</span>上线与子域名（Vercel）</h2>
+    <h2><span class="snum">13</span>上线与子域名（Vercel）</h2>
     <p class="sub">用 Vercel 做子域名解析与上线；本纲要放入 gacee-docs 供外部访问，<strong>且不改动协会官网</strong>。</p>
     <div class="twrap"><table>
       <thead><tr><th>子域名</th><th>用途</th><th>Vercel 项目</th><th>状态</th></tr></thead>
@@ -507,7 +580,7 @@ flowchart LR
   </section>
 
   <section id="dec">
-    <h2><span class="snum">13</span>待定决策</h2>
+    <h2><span class="snum">14</span>待定决策</h2>
     <p class="sub">已全部拍板。AI：用 JE 代码单独部署一套 JE Agent。</p>
     <div class="dec"><h4>地图服务商 <span class="pill p-done">已定</span></h4><p><span class="rec">Mapbox</span>（Artifact Mock 内因 CSP 用风格化地图占位）。</p></div>
     <div class="dec"><h4>支付通道 <span class="pill p-done">已定</span></h4><p><span class="rec">Stripe（协会名下）</span>；大量中国境内参与者后续加微信/支付宝。</p></div>

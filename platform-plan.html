@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>GACEE 协会平台规划</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --bg:#F3F5F9; --surface:#FFFFFF; --surface-2:#ECEFF5; --surface-3:#E2E7F1;
+    --ink:#161A24; --ink-soft:#49505F; --ink-faint:#7A8194;
+    --line:#D9DEEA; --line-strong:#C4CBDB;
+    --accent:#1F3AA8; --accent-2:#3350C4; --accent-soft:#E6EAF7;
+    --gold:#8A6A1C; --gold-soft:#F2EAD4; --cinnabar:#A83E3E; --cinnabar-soft:#F5E3E1;
+    --good:#2E7D57; --good-soft:#DDEFE6;
+    --shadow:0 1px 2px rgba(20,25,40,.05),0 8px 24px rgba(20,25,40,.06);
+    --radius:14px; --maxw:960px;
+    --serif:"Noto Serif SC",Georgia,"Songti SC",serif;
+    --sans:"Noto Sans SC",system-ui,-apple-system,"PingFang SC",sans-serif;
+    --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1219; --surface:#161C28; --surface-2:#1D2432; --surface-3:#242C3C;
+      --ink:#E9ECF4; --ink-soft:#AEB6C7; --ink-faint:#828BA0;
+      --line:#293142; --line-strong:#374056;
+      --accent:#8497EC; --accent-2:#9FAEF2; --accent-soft:#1C2540;
+      --gold:#D6B25A; --gold-soft:#2C2413; --cinnabar:#E7938C; --cinnabar-soft:#331C1B;
+      --good:#74CF9C; --good-soft:#14271E;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1219; --surface:#161C28; --surface-2:#1D2432; --surface-3:#242C3C;
+    --ink:#E9ECF4; --ink-soft:#AEB6C7; --ink-faint:#828BA0;
+    --line:#293142; --line-strong:#374056;
+    --accent:#8497EC; --accent-2:#9FAEF2; --accent-soft:#1C2540;
+    --gold:#D6B25A; --gold-soft:#2C2413; --cinnabar:#E7938C; --cinnabar-soft:#331C1B;
+    --good:#74CF9C; --good-soft:#14271E;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+    line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  header.hero{padding:64px 0 34px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .hero h1{font-family:var(--serif);font-weight:700;letter-spacing:.01em;
+    font-size:clamp(30px,5vw,44px);line-height:1.15;margin:.35em 0 .3em;text-wrap:balance}
+  .hero .lede{font-size:18px;color:var(--ink-soft);max-width:60ch;margin:0}
+  .meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;font-size:13.5px;color:var(--ink-faint)}
+  .meta b{color:var(--ink-soft);font-weight:600}
+  nav.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-bottom:8px}
+  nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+  nav.toc a{white-space:nowrap;font-size:13px;color:var(--ink-soft);padding:5px 11px;border-radius:999px;border:1px solid transparent}
+  nav.toc a:hover{background:var(--surface-2);text-decoration:none;color:var(--ink)}
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:0}
+  h2{font-family:var(--serif);font-weight:600;font-size:26px;margin:0 0 6px;letter-spacing:.01em;text-wrap:balance;scroll-margin-top:64px}
+  .snum{color:var(--accent);font-weight:700;margin-right:.5em;font-family:var(--mono);font-size:.82em}
+  .sub{color:var(--ink-soft);margin:0 0 22px;max-width:64ch}
+  h3{font-family:var(--serif);font-weight:600;font-size:18px;margin:26px 0 10px}
+  p{margin:0 0 14px}
+  ul{margin:0 0 14px;padding-left:1.2em}li{margin:.28em 0}
+  .pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid;line-height:1.5;white-space:nowrap}
+  .p-done{color:var(--good);background:var(--good-soft);border-color:color-mix(in srgb,var(--good) 30%,transparent)}
+  .p-todo{color:var(--gold);background:var(--gold-soft);border-color:color-mix(in srgb,var(--gold) 30%,transparent)}
+  .p-no{color:var(--cinnabar);background:var(--cinnabar-soft);border-color:color-mix(in srgb,var(--cinnabar) 30%,transparent)}
+  .p-accent{color:var(--accent);background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 28%,transparent)}
+  .eco{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0 4px}
+  @media(max-width:720px){.eco{grid-template-columns:1fr}}
+  .eco .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+  .eco .card .dom{font-family:var(--mono);font-size:12.5px;color:var(--accent);font-weight:600}
+  .eco .card h4{font-family:var(--serif);font-size:17px;margin:6px 0 8px;font-weight:600}
+  .eco .card p{font-size:13.5px;color:var(--ink-soft);margin:0}
+  .eco .card.self{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow)}
+  .twrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:16px 0}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px;background:var(--surface)}
+  th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--surface-2);font-weight:600;color:var(--ink);position:sticky;top:0;font-size:13px;letter-spacing:.01em}
+  tbody tr:last-child td{border-bottom:0}
+  td.c,th.c{text-align:center;font-variant-numeric:tabular-nums}
+  .yes{color:var(--good);font-weight:700}.no{color:var(--ink-faint)}
+  .lim{color:var(--gold);font-weight:600}
+  td .fname{font-family:var(--mono);font-size:12.5px;color:var(--accent-2);font-weight:600}
+  .rowhead{font-weight:600;white-space:nowrap}
+  .note{display:flex;gap:12px;background:var(--surface-2);border:1px solid var(--line);
+    border-left:3px solid var(--accent);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:14px;color:var(--ink-soft)}
+  .note.warn{border-left-color:var(--cinnabar)}
+  .note.gold{border-left-color:var(--gold)}
+  .note b{color:var(--ink)}
+  pre.mermaid{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;text-align:center;box-shadow:var(--shadow);overflow-x:auto;margin:16px 0;line-height:1.4}
+  .road{display:flex;flex-direction:column;gap:0;margin-top:8px}
+  .phase{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--line)}
+  .phase:first-child{border-top:0}
+  @media(max-width:600px){.phase{grid-template-columns:1fr;gap:6px}}
+  .phase .tag{font-family:var(--mono);font-weight:700;color:var(--accent);font-size:15px}
+  .phase .tag small{display:block;color:var(--ink-faint);font-weight:400;font-size:11.5px;letter-spacing:.05em;margin-top:2px}
+  .phase h4{margin:0 0 6px;font-family:var(--serif);font-size:16.5px;font-weight:600}
+  .phase p{margin:0;font-size:14px;color:var(--ink-soft)}
+  .dec{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:12px 0;box-shadow:var(--shadow)}
+  .dec h4{margin:0 0 6px;font-size:15.5px;font-family:var(--sans);font-weight:700;display:flex;align-items:center;gap:8px}
+  .dec p{margin:0;font-size:14px;color:var(--ink-soft)}
+  .dec .rec{color:var(--ink);font-weight:600}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:16px 0}
+  .flow .step{flex:1 1 120px;min-width:120px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
+  .flow .step b{display:block;font-size:14px;color:var(--ink)}
+  .flow .step span{font-size:12px;color:var(--ink-faint)}
+  .flow .arrow{display:flex;align-items:center;color:var(--accent);font-weight:700;padding:0 8px}
+  @media(max-width:600px){.flow{flex-direction:column}.flow .arrow{transform:rotate(90deg);padding:4px 0}}
+  footer{padding:34px 0 60px;color:var(--ink-faint);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">GACEE · 全球文化教育交流协会</div>
+    <h1>协会平台规划纲要</h1>
+    <p class="lede">协会的资源与活动运营中枢，也是官网内容的源头——内容投稿与审核、项目、资源对接、研学地图、出版图书，由 JE Agent 支撑内容初审与项目模版化。</p>
+    <div class="meta">
+      <span><b>版本</b> 草案 v0.7</span>
+      <span><b>日期</b> 2026-09-14</span>
+      <span><b>域名</b> hub.gacee.org（拟）</span>
+      <span><b>AI</b> 独立部署 JE Agent（用 JE 代码）</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#pos">定位与边界</a>
+  <a href="#arch">系统架构</a>
+  <a href="#role">角色与权限</a>
+  <a href="#mod">模块功能</a>
+  <a href="#content">内容投稿</a>
+  <a href="#proj">项目管理</a>
+  <a href="#data">数据模型</a>
+  <a href="#gov">资源管控</a>
+  <a href="#map">研学地图</a>
+  <a href="#cert">证书发证验真</a>
+  <a href="#road">分阶段路线</a>
+  <a href="#deploy">上线子域名</a>
+  <a href="#dec">待定决策</a>
+</div></nav>
+
+<main class="wrap">
+
+  <section id="pos">
+    <h2><span class="snum">01</span>定位与边界</h2>
+    <p class="sub">GACEE 数字体系由三套<strong>相互独立</strong>的系统组成。本规划只覆盖「协会平台」；它同时是官网内容的<strong>源头</strong>。</p>
+    <div class="eco">
+      <div class="card">
+        <div class="dom">gacee.org</div>
+        <h4>协会官网</h4>
+        <p>对外形象、新闻、项目、活动展示。内容<strong>实时拉取自平台</strong>。<span class="pill p-done" style="margin-top:8px">现有·转 headless</span></p>
+      </div>
+      <div class="card self">
+        <div class="dom">hub.gacee.org</div>
+        <h4>协会平台 ★本规划</h4>
+        <p>带登录/权限的运营中枢 + 官网内容源头。<span class="pill p-accent" style="margin-top:8px">新建</span></p>
+      </div>
+      <div class="card">
+        <div class="dom">learn.gacee.org</div>
+        <h4>山海同文 · AI 中文</h4>
+        <p>AI 中文学习产品，独立项目。<span class="pill p-no" style="margin-top:8px">不在本期·不混入</span></p>
+      </div>
+    </div>
+    <div class="note"><div><b>硬边界。</b> 协会平台与山海同文<strong>绝不混到一起</strong>：各自独立仓库、后端、数据、排期。平台<strong>代码/数据/运行时彻底独立</strong>：AI/Agent <strong>用 JE 代码单独部署一套</strong>（独立实例、独立数据，不共用 jurisedu 在线服务）。两系统仅经<strong>约定接口衔接</strong>：山海同文的结业证书由平台<strong>统一签发/验真</strong>、阶段 2 <strong>SSO</strong>；平台不承载其教学功能。<strong>出版/图书纳入本期</strong>。</div></div>
+  </section>
+
+  <section id="arch">
+    <h2><span class="snum">02</span>系统架构</h2>
+    <p class="sub">已拍板：新建独立平台 app + 独立后端，代码/数据/运行时与 jurisedu 解耦；AI/Agent 用 JE 代码单独部署一套（独立实例）；官网作为 headless 前端实时拉取平台内容。</p>
+    <div class="grid2">
+      <div>
+        <h3>技术栈</h3>
+        <ul>
+          <li><b>前端</b>：Next.js（App Router）+ 多语言（zh/en，可加 fr）</li>
+          <li><b>内容/后台</b>：Payload CMS（自带后台、RBAC、REST/GraphQL）</li>
+          <li><b>数据库</b>：PostgreSQL（独立实例，数据驻留新加坡）</li>
+          <li><b>AI（初审 + 项目模版化）</b>：<b>单独部署一套 JE Agent</b>（用 JE 代码，独立实例/数据/运行时）</li>
+          <li><b>地图</b>：研学地图组件（服务商见 §12 待定）</li>
+          <li><b>收款</b>：Stripe（<b>协会名下账户</b>）</li>
+        </ul>
+      </div>
+      <div>
+        <h3>部署与产权</h3>
+        <ul>
+          <li>部署可复用 JE 新加坡 k8s + Cloudflare（仅基础设施）</li>
+          <li>代码库独立：<span class="fname">gacee-platform</span>（拟）</li>
+          <li>域名、Stripe、数据库均在<b>协会名下</b></li>
+          <li>JE Agent 用 JE 代码单独部署，独立实例/数据/运行时</li>
+        </ul>
+      </div>
+    </div>
+    <pre class="mermaid">
+flowchart LR
+  U["校长 / 机构 / 参与者"] --> P["协会平台<br/>hub.gacee.org"]
+  P --> CMS["Payload CMS + Postgres"]
+  P --> JE["JE Agent 独立实例<br/>用 JE 代码·本平台部署"]
+  P --> PAY["Stripe · 协会账户"]
+  P --> MAP["地图服务"]
+  P -- 内容 API --> SITE["官网 gacee.org<br/>(headless 实时拉取)"]
+  P -. 阶段2 SSO .-> HQ["山海同文 (独立)"]
+    </pre>
+  </section>
+
+  <section id="role">
+    <h2><span class="snum">03</span>角色与权限</h2>
+    <p class="sub">三维关系「身份角色 × 认证状态 × 权限/开放程度」。<span class="pill p-done">已定稿</span></p>
+    <div class="twrap"><table>
+      <thead><tr>
+        <th>角色</th><th class="c">浏览公开</th><th class="c">报名/捐赠</th><th class="c">投稿</th><th class="c">发布资源</th>
+        <th class="c">资源可公开对接</th><th class="c">看/换联系方式</th><th class="c">审核/复核</th><th class="c">后台管控</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="rowhead">超级管理员</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td></tr>
+        <tr><td class="rowhead">协会运营 / 秘书处</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c lim">按职能</td></tr>
+        <tr><td class="rowhead">理事 / 会长</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c lim">审批重大</td><td class="c lim">只读</td></tr>
+        <tr><td class="rowhead">认证会员（校长/机构）</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c lim">按设置</td><td class="c no">—</td><td class="c no">—</td></tr>
+        <tr><td class="rowhead">非认证会员</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c lim">经审</td><td class="c lim">受限/需审核</td><td class="c no">—</td><td class="c no">需对接通过</td><td class="c no">—</td><td class="c no">—</td></tr>
+        <tr><td class="rowhead">参与者（个人）</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td></tr>
+        <tr><td class="rowhead">访客</td><td class="c lim">仅公开</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid2">
+      <div>
+        <h3>认证状态决定开放程度</h3>
+        <ul>
+          <li><b>非认证</b>：可浏览、报名、捐赠、投稿（经审）；发布可对接资源、查看联系方式<b>受限，须先认证</b>。</li>
+          <li><b>认证</b>：资源可公开对接、联系方式按设置可见、一般类资源免审核、更高可见性、带「协会认证」徽章。</li>
+        </ul>
+      </div>
+      <div>
+        <h3>运营按职能分权</h3>
+        <ul>
+          <li>内容复核 · 对接审核 · 认证审核</li>
+          <li>财务（缴费 / 捐赠）</li>
+          <li>资源管控（可见性 / 下架 / 申诉）</li>
+        </ul>
+        <p style="font-size:13px;color:var(--ink-soft);margin-top:8px"><b>赛事/交流扩展角色：</b>评审专家（评审阅卷，<b>作文老师主导</b>）、指导老师/领队、学生/家长、合作机构（赛事方）——各自权限并入平台 RBAC。</p>
+      </div>
+    </div>
+    <div class="note gold"><div><b>后续补充（规划位）。</b> ① 会员<strong>证书与认证</strong>：会员/机构认证徽章、协会统一发证与验真，与 §10 证书中枢打通；② <strong>会员权益体系</strong>：分层权益、资源优先对接、活动/研学折扣、专属内容与线下礼遇等——将在后续版本细化。</div></div>
+  </section>
+
+  <section id="mod">
+    <h2><span class="snum">04</span>模块功能</h2>
+    <p class="sub">本期范围一览。详见后续各节。</p>
+    <div class="twrap"><table>
+      <thead><tr><th>模块</th><th>核心能力</th><th class="c">状态</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">内容中枢（投稿/审核/发布）</td><td>文章·图片·视频投稿 → JE Agent 初审 → 人工复核 → 发布 → 官网实时拉取（§05）</td><td class="c"><span class="pill p-done">本期</span></td></tr>
+        <tr><td class="rowhead">项目管理</td><td>参照官网 7 大项目细化；<b>JE Agent 模版化/可复制</b>整个项目管理过程（§06）</td><td class="c"><span class="pill p-done">本期</span></td></tr>
+        <tr><td class="rowhead">赛事与评审</td><td>科技赛事出海运营（ICC/WRC）+ <b>AI 评审阅卷中枢</b>（作文以老师为主、AI 辅助）；报名/备赛/作品/评审/证书（§06）</td><td class="c"><span class="pill p-done">本期·新增</span></td></tr>
+        <tr><td class="rowhead">资源管理 + 对接</td><td>四类资源；目录+申请 与 双向供需 结合；分类型审核</td><td class="c"><span class="pill p-done">本期</span></td></tr>
+        <tr><td class="rowhead">研学地图 ★</td><td>地图浏览研学产品 → 报名 → 缴费 → 电子导览（§09）</td><td class="c"><span class="pill p-done">本期</span></td></tr>
+        <tr><td class="rowhead">出版 / 图书</td><td>出版物·作品集（作文大赛结集）、书目/阅读清单（读书会）、在线图书馆</td><td class="c"><span class="pill p-done">本期·新纳入</span></td></tr>
+        <tr><td class="rowhead">会员 / 注册</td><td>个人与机构、认证/非认证、角色与资料</td><td class="c"><span class="pill p-done">本期</span></td></tr>
+        <tr><td class="rowhead">活动 + 直播</td><td>活动发布报名；凭发布的链接进入直播</td><td class="c"><span class="pill p-done">本期</span></td></tr>
+        <tr><td class="rowhead">证书发证与验证</td><td><b>协会统一发证中枢</b>：唯一编号+二维码防伪，公开验真；<b>山海同文证书也经此发出</b>（§10）</td><td class="c"><span class="pill p-done">本期·新纳入</span></td></tr>
+        <tr><td class="rowhead">捐赠供需</td><td>资金/图书物资/公益课时师资/设备——<b>归入「公益」项目，不单列</b>（§06）</td><td class="c"><span class="pill p-done">本期</span></td></tr>      </tbody>
+    </table></div>
+  </section>
+
+  <section id="content">
+    <h2><span class="snum">05</span>内容投稿与发布</h2>
+    <p class="sub">官网 gacee.org 的所有信息与文章投稿都来自本平台。内容经「投稿 → JE Agent 初审 → 人工复核 → 发布」后，官网实时拉取。<span class="pill p-done">已定</span></p>
+    <div class="flow">
+      <div class="step"><b>投稿</b><span>文章 / 图片 / 视频</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>JE Agent 初审</b><span>合规筛查·润色纠错·事实标注·分类摘要</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>人工复核</b><span>运营·内容复核职能</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>发布</b><span>官网实时拉取 API</span></div>
+    </div>
+    <div class="grid2">
+      <div>
+        <h3>谁能投稿</h3>
+        <ul>
+          <li>认证会员 · 所有注册会员 · 合作机构 · 运营自采</li>
+          <li>非认证会员投稿须经审核；认证会员流程更快</li>
+        </ul>
+        <h3>JE Agent 编辑初审（四项）</h3>
+        <ul>
+          <li>合规 / 敏感内容筛查（标风险供人工复核）</li>
+          <li>文字润色与纠错（不改原意）</li>
+          <li>事实核查 · 标注存疑（不自作主张）</li>
+          <li>自动分类 / 打标 / 摘要 / 封面建议</li>
+        </ul>
+      </div>
+      <div>
+        <h3>内容工作流状态</h3>
+        <ul>
+          <li><span class="fname">draft</span> 草稿 / 投稿</li>
+          <li><span class="fname">ai_reviewed</span> JE Agent 初审完成（含评分与标注）</li>
+          <li><span class="fname">in_review</span> 待人工复核</li>
+          <li><span class="fname">published</span> 已发布（官网可见）</li>
+          <li><span class="fname">rejected / returned</span> 退回并附理由</li>
+        </ul>
+        <h3>官网对接</h3>
+        <p><b>官网实时拉取 API</b>（headless）：发布后官网即时可见，官网无独立内容库。</p>
+      </div>
+    </div>
+    <div class="note"><div><b>JE Agent 只做初审、不终审。</b> 输出为建议与风险标注，<strong>人工复核后才发布</strong>；敏感内容一律人工把关。</div></div>
+  </section>
+
+  <section id="proj">
+    <h2><span class="snum">06</span>项目管理（参照官网真实项目 · JE Agent 模版化）</h2>
+    <p class="sub">下列 7 个项目取自现官网 gacee.org 的「旗舰项目」——每个都是<strong>长期平台</strong>而非一次性活动。</p>
+    <div class="twrap"><table>
+      <thead><tr><th>项目</th><th>定位</th><th>概览 / 进度</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">全球百名校长中国行</td><td>以校长为桥，连接全球学校与中国</td><td>已办 3 届 · 180 位校长 / 34 国 · 下届安徽或杭州—绍兴</td></tr>
+        <tr><td class="rowhead">世界中文作文大赛</td><td>中文链接世界，写作连接未来</td><td>已办 2 届 · 30+ 国 / 100+ 校 · 小学·初中·高中</td></tr>
+        <tr><td class="rowhead">国际文化研学</td><td>从「写中国」到「行走中国」</td><td>线路 西安·安徽·潮汕 · 专家导学（对接 §09 研学地图）</td></tr>
+        <tr><td class="rowhead">全球华文校长论坛</td><td>面向国际中文教育未来的高端论坛</td><td>最近一届 郑州 2025.4 · 校长与教育领导者</td></tr>
+        <tr><td class="rowhead">全球中文在线培训</td><td>老师主导、AI 辅助，为最难联网的课堂而建</td><td>尼日利亚试点 · 直播/录播/离线 <span class="pill p-no" style="margin-left:4px">产品归山海同文·平台仅登记</span></td></tr>
+        <tr><td class="rowhead">未来书院</td><td>中学为体，西学为用，面向未来</td><td>四大板块 · 面向全球青少年 · 体系建设中</td></tr>
+        <tr><td class="rowhead">公益讲座与 EduLink-Africa</td><td>教育是点亮未来的火种</td><td>免费公益讲座（线上线下）· 非洲学校支持 · <b>含捐赠供需</b></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>JE Agent 模版化 / 可复制的项目管理</h3>
+    <p>目标：每类项目沉淀为<strong>可复制模板</strong>，开新一届即实例化，由 <strong>JE Agent 编排</strong>整个流程——立项 → 招募/报名 → 执行 → 结项/成果。可参考山海同文落地方案的可复制工作流范式（洽谈 → 调研 → 试点卡 → 实施），把重复性运营交给 Agent，人做决策与复核。</p>
+    <div class="flow">
+      <div class="step"><b>选模板</b><span>如"校长中国行"</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>实例化一届</b><span>地点/日期/名额</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>JE Agent 编排</b><span>任务/清单/提醒/材料</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>结项归档</b><span>成果·统计·复用</span></div>
+    </div>
+    <div class="note gold"><div><b>边界。</b>「全球中文在线培训」的教学产品是<strong>山海同文</strong>（独立）；平台只把它作为<strong>项目条目</strong>登记展示，不承载教学功能。</div></div>
+
+    <h3>项目数据模型（对齐官网结构，供官网拉取）</h3>
+    <div class="twrap"><table>
+      <thead><tr><th>字段</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td><span class="fname">slug / title / tagline</span></td><td>标识、名称、一句话定位</td></tr>
+        <tr><td><span class="fname">summary / body[]</span></td><td>摘要、正文段落（富文本）</td></tr>
+        <tr><td><span class="fname">facts[]</span></td><td>概览指标（label/value，如"已办 3 届"）</td></tr>
+        <tr><td><span class="fname">template / editions[]</span></td><td>项目模板 + 各届次实例（地点/日期/统计）</td></tr>
+        <tr><td><span class="fname">cover / gallery</span></td><td>封面、图集/视频</td></tr>
+        <tr><td><span class="fname">relations</span></td><td>关联资源 / 活动 / 研学产品 / 出版物 / 捐赠(公益)</td></tr>
+        <tr><td><span class="fname">status / featured / visibility</span></td><td>状态、首页精选、可见性</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>科技赛事出海 + AI 评审阅卷（新增项目线）</h3>
+    <p>与上海青少年科技赛事机构（ICC 全球发明大会中国区 / WRC 世界机器人大会青少年赛）合作：<strong>不复制赛事进新马，而是帮其国际化出海</strong>——赛事＝入口，产品＝中国青少年科技创新国际交流（AI 学习 + 科技研学 + 大学/企业参访 + 跨国联合项目）。以新加坡为落地点。复用本平台：项目自动化（物料/报名/收费/通知）+ 研学地图（SG 落地/参访）+ 证书（协会统一发证）；对方无 AI 平台，由 JE 提供平台与技术。</p>
+    <div class="note gold"><div><b>AI 评审阅卷中枢。</b> 提交作品 → AI 初评（分项建议 + 查重 + AI 代写检测）→ 老师/专家复核签字 → 排名 → 证书。<strong>作文审核以老师为主、AI 为辅</strong>：AI 不定分，评分与定稿由老师决定；同时服务科技作品/项目答辩评审。</div></div>
+    <div class="note"><div><b>三方 · 非营利。</b> 合作机构（赛事 IP/学校/生源）× GACEE（海外资源/国际化运营/品牌）× JE（AI 平台）。合作形态只写「委托开发+授权」或「联合运营+分成」，不涉合资/持股；收款在协会名下。</div></div>
+  </section>
+
+  <section id="data">
+    <h2><span class="snum">07</span>数据模型（字段建议稿）</h2>
+    <p class="sub">字段为建议初稿，供审阅增删改。<span class="pill p-todo">待技术负责人确定</span></p>
+    <pre class="mermaid">
+flowchart TD
+  Org["机构 Organization"] --- Mem["会员 Member"]
+  Mem --> Sub["投稿 Submission<br/>文章/图片/视频"]
+  Sub --> JE["JE Agent 初审"]
+  Sub --> Art["已发布内容 → 官网 API"]
+  Mem --> Res["资源 Resource"]
+  Res --> Match["对接 Match"]
+  Res --> Tour["研学产品 StudyTour"]
+  Tour --> Pt["站点 MapPoint"] --> Guide["电子导览"]
+  Tour --> Enr["报名"] --> Pay["缴费"]
+  Proj["项目 Project<br/>模板+届次"] --> Res
+  Proj --> Evt["活动 Event"]
+  Proj --> Pub["出版物/书目"]
+  Proj --> Cert["证书 Certificate<br/>编号+二维码"]
+  Proj --> Don["捐赠 供/需<br/>(公益项目内)"]
+    </pre>
+    <h3>资源 · 各类型专有字段</h3>
+    <div class="twrap"><table>
+      <thead><tr><th>类型</th><th>专有字段</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">师资 / 专家</td><td>专长领域、可授语言、可授学段、形式、代表经历、资质附件（受控）</td></tr>
+        <tr><td class="rowhead">研学基地 / 场地 / 线路</td><td>坐标、主题、容量、适合学段、可用时段、设施、费用区间、图片、合作条件</td></tr>
+        <tr><td class="rowhead">课程 / 教研 / 出版物</td><td>子类型、学科/学段、语言、简介、样章/预览、授权方式、价格或公益</td></tr>
+        <tr><td class="rowhead">项目机会 / 名额 / 资金</td><td>子类型、面向对象、名额或金额、条件、截止日期（<b>敏感·需审核</b>）</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid2">
+      <div>
+        <h3>内容 / 出版</h3>
+        <ul>
+          <li><b>Submission/Article</b>：类型（文/图/视频）、作者、工作流状态、JE Agent 初审结果、复核人、分类/标签/摘要、可见性</li>
+          <li><b>Publication</b>：出版物/作品集/书目、关联项目、封面、授权</li>
+        </ul>
+      </div>
+      <div>
+        <h3>会员 / 机构 / 捐赠</h3>
+        <ul>
+          <li><b>Member</b>：身份、认证状态、所属机构、联系方式（可见性可设）</li>
+          <li><b>Organization</b>：类型（学校/培训/文化/出版/政府）、资质附件</li>
+          <li><b>Donation</b>：方向（供/需）、类别、数量、状态（<b>挂在公益项目下</b>）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="gov">
+    <h2><span class="snum">08</span>资源信息管控</h2>
+    <p class="sub">作为贯穿性设计，而非单独功能。</p>
+    <ul>
+      <li><b>RBAC</b>：7 类身份 + 运营按职能分权（见 §03）。</li>
+      <li><b>可见性分级</b>：公开 / 会员 / 仅认证 / 定向机构 / 私密；非认证看不到联系方式。</li>
+      <li><b>分资源类型审核</b>：资金、名额、专家等敏感资源对接须审核；一般资源双方同意即可。</li>
+      <li><b>双方同意机制</b>：对接是「申请 → 同意」两步，防裸抓。</li>
+      <li><b>内容三道关</b>：投稿 → JE Agent 初审 → 人工复核，敏感内容一律人工把关。</li>
+      <li><b>审计留痕</b>：查看/对接/下载/发布可追溯。</li>
+    </ul>
+    <div class="note warn"><div><b>涉资金红线。</b> 缴费与捐赠收款账户须在协会名下；费率、价格、支付通道按区域实测后确定，规划阶段不写死数字。</div></div>
+  </section>
+
+  <section id="map">
+    <h2><span class="snum">09</span>研学地图</h2>
+    <p class="sub">把研学从"列表"升级为"地图"——平台亮点，直接承接「国际文化研学」项目（西安/安徽/潮汕）。</p>
+    <pre class="mermaid">
+flowchart LR
+  M["研学地图<br/>按区域/主题浏览"] --> D["产品详情<br/>路线·站点·名额·价格"]
+  D --> R["报名"]
+  R --> P["缴费 Stripe"]
+  P --> G["电子导览<br/>行前/行中 图文·音频·打卡"]
+    </pre>
+    <h3>研学产品 · 四版本分层（每地点四套）</h3>
+    <p class="sub" style="max-width:none">同一研学地点/线路提供四套版本，按人群与目标分层；报名时选版本，行程 / 价格 / 权益随版本变（结合 §05 报名多档位）。</p>
+    <div class="twrap"><table>
+      <thead><tr><th>版本</th><th>面向</th><th>主题</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">高奢版</td><td>企业 / 政企 / 投资人</td><td>商务考察 · 产业对接 · 政企合作</td></tr>
+        <tr><td class="rowhead">校长版</td><td>校长 / 教育机构负责人</td><td>高校考察 · 教育交流 · 校际合作</td></tr>
+        <tr><td class="rowhead">有志青年版</td><td>中学生 / 大学生</td><td>升学规划 · 企业探访 · 职业体验（大学参访 · 留学项目）</td></tr>
+        <tr><td class="rowhead">大众版</td><td>家庭 / 普通参与者</td><td>历史文化 · 非遗体验 · 科普启迪 · 名校参访</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note"><div><b>与角色联动。</b> 机构/校长 → 校长版，学生/家长 → 大众版·有志青年版，商务 → 高奢版。数据模型 <span class="fname">StudyTour.variants[]</span>（版本 → 行程/名额/价格/权益），报名时选版本。</div></div>
+  </section>
+
+  <section id="cert">
+    <h2><span class="snum">10</span>证书发证与验证</h2>
+    <p class="sub">协会证书的发放与验真都在本平台——它是<strong>协会统一发证与验真中枢</strong>；<strong>山海同文的结业证书也经此平台发出</strong>（山海同文作为消费方经接口发证）。</p>
+    <div class="grid2">
+      <div>
+        <h3>发证</h3>
+        <ul>
+          <li>按项目/活动的证书模板批量或单个签发</li>
+          <li>每证 <span class="fname">唯一编号 + 二维码</span>，绑定持证人与来源</li>
+          <li>PDF/图片导出；可作废/重发，全程留痕</li>
+          <li>签发权限受控（运营·证书职能）；对外提供<b>发证接口</b>供山海同文等调用</li>
+        </ul>
+      </div>
+      <div>
+        <h3>验证</h3>
+        <ul>
+          <li>公开验真页（<span class="fname">verify.gacee.org</span> 或 /verify/[id]）</li>
+          <li>扫码 / 输编号 → 显示真伪、持证人、来源、状态</li>
+          <li>防伪防篡改；作废证书显示已失效</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note gold"><div><b>边界。</b> 平台只发<strong>协会自己的证书</strong>（含山海同文结业证书）；HSK/YCT 等官方认证走官方考点，平台<strong>不冒充官方发证</strong>。山海同文经接口发证=干净的共享服务，不把教学功能混入平台。</div></div>
+  </section>
+
+  <section id="road">
+    <h2><span class="snum">11</span>分阶段路线</h2>
+    <p class="sub">地基先行；内容中枢与项目优先（直接支撑官网），研学地图为亮点里程碑。</p>
+    <div class="road">
+      <div class="phase"><div class="tag">P0<small>地基</small></div><div><h4>骨架与身份</h4><p>新仓库 + Payload CMS + 认证 + RBAC/可见性 + 会员/机构 + 认证流程。可本地运行。</p></div></div>
+      <div class="phase"><div class="tag">P1<small>内容·项目</small></div><div><h4>内容中枢 + 项目管理 + 出版图书</h4><p>投稿→JE Agent 初审→人工复核→发布→<b>官网实时拉取</b>；7 大项目 + JE Agent 模版化；出版物/书目；资源登记。</p></div></div>
+      <div class="phase"><div class="tag">P2<small>亮点</small></div><div><h4>研学地图</h4><p>地图 + 研学产品 + 报名 + Stripe 缴费 + 电子导览。</p></div></div>
+      <div class="phase"><div class="tag">P3<small>撮合·公益</small></div><div><h4>资源对接与公益捐赠</h4><p>资源供需撮合（目录+申请、双向、分类型审核）+ 公益项目下的捐赠供需。</p></div></div>
+      <div class="phase"><div class="tag">P4<small>活动·证书</small></div><div><h4>活动·直播 + 证书中枢</h4><p>活动发布报名 + 直播入口；证书发证与验真中枢（含山海同文发证接口）。</p></div></div>
+    </div>
+  </section>
+
+  <section id="deploy">
+    <h2><span class="snum">12</span>上线与子域名（Vercel）</h2>
+    <p class="sub">用 Vercel 做子域名解析与上线；本纲要放入 gacee-docs 供外部访问，<strong>且不改动协会官网</strong>。</p>
+    <div class="twrap"><table>
+      <thead><tr><th>子域名</th><th>用途</th><th>Vercel 项目</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">hub.gacee.org</td><td>协会平台 app（新建）</td><td>gacee-platform（拟）</td><td><span class="pill p-todo">待上线</span></td></tr>
+        <tr><td class="rowhead">docs.gacee.org</td><td>文档站（品牌手册 · 方案 · <b>本规划纲要</b>）</td><td>gacee-docs（已存在）</td><td><span class="pill p-done">复用</span></td></tr>
+        <tr><td class="rowhead">gacee.org</td><td>协会官网</td><td>gacee-site</td><td><span class="pill p-no">本纲要不入官网</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="note"><div><b>发布方式。</b> 本纲要以完整静态页并入 <span class="fname">gacee-docs/platform-plan.html</span>，随 gacee-docs 部署到 <b>docs.gacee.org</b>（noindex，仅持链可达）；命令 <span class="fname">vercel --prod --scope db-agi</span>。hub.gacee.org 待平台 app 上线后在 Vercel 绑定子域名。<b>不在协会官网 gacee.org 添加任何本纲要 / 平台链接。</b></div></div>
+  </section>
+
+  <section id="dec">
+    <h2><span class="snum">13</span>待定决策</h2>
+    <p class="sub">已全部拍板。AI：用 JE 代码单独部署一套 JE Agent。</p>
+    <div class="dec"><h4>地图服务商 <span class="pill p-done">已定</span></h4><p><span class="rec">Mapbox</span>（Artifact Mock 内因 CSP 用风格化地图占位）。</p></div>
+    <div class="dec"><h4>支付通道 <span class="pill p-done">已定</span></h4><p><span class="rec">Stripe（协会名下）</span>；大量中国境内参与者后续加微信/支付宝。</p></div>
+    <div class="dec"><h4>仓库名 / 域名 <span class="pill p-done">已定</span></h4><p><span class="rec">gacee-platform / hub.gacee.org</span></p></div>
+    <div class="dec"><h4>登录方式 <span class="pill p-done">已定</span></h4><p><span class="rec">邮箱+密码 + 邮箱验证码</span>，角色区分校长/机构。</p></div>
+  </section>
+
+</main>
+
+<footer><div class="wrap">
+  <span>GACEE 协会平台 · 规划纲要 v0.7 · 2026-09-14</span>
+  <span>与山海同文严格分离 · JE Agent 独立部署（用 JE 代码）· 官网内容源自本平台</span>
+</div></footer>
+
+<script>
+  document.querySelectorAll('nav.toc a').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var el=document.querySelector(this.getAttribute('href'));
+      if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+</script>
+
+</body>
+</html>

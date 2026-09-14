@@ -376,13 +376,13 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
 <section id="s5">
   <div class="eyebrow">05 · Workstream C</div>
   <h2>技术验证与阶段 0<span class="en">Prove the risky parts first</span></h2>
-  <p class="intro">技术架构、Agent Harness、JE 引擎编排与 TIDAR KAG 见 §06；本章说明验证方法与通过标准。八张测试卡全部有结论，才进入 MVP 冻结。四国的网络类测试卡各跑一遍，其余测试卡跑一遍即可。</p>
+  <p class="intro">技术架构、Agent Harness、JE 引擎编排与 TIDAR-KAG 见 §06；本章说明验证方法与通过标准。八张测试卡全部有结论，才进入 MVP 冻结。四国的网络类测试卡各跑一遍，其余测试卡跑一遍即可。</p>
 
   <h3>复用与新建（摘要）</h3>
   <div class="grid g2">
     <div class="card"><h4>直接复用（已上线、已验证）</h4><ul>
       <li>Go 后端、Postgres、新加坡 Kubernetes、多租户隔离与行级安全</li>
-      <li>JE Engine / JE Agent 单回合工具循环、TIDAR KAG 有出处答疑</li>
+      <li>JE Engine / JE Agent 单回合工具循环、TIDAR-KAG 有出处答疑</li>
       <li>知识图谱与掌握度（compute-on-read）、Wilson 下界判定</li>
       <li>多智能体批改 + 复核、老师音色复刻（CosyVoice）、拍照识别（Qwen-VL）</li>
       <li>邮箱验证码、线下收款登记、可验真证书、站内助手与工单、七语界面包</li>
@@ -438,8 +438,8 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
 </section>
 <section id="s6">
   <div class="eyebrow">06 · Architecture &amp; technical route</div>
-  <h2>技术架构与技术路线<span class="en">JE Engine, the Agent Harness, and TIDAR KAG</span></h2>
-  <p class="intro">山海同文的技术基座为 JurisEdu 已投入生产运行的 JE 引擎、Agent Harness 与 TIDAR KAG。本项目在该基座之上新增三层能力：跨境弱网媒体层（直播 / 录播 / 内容包）、离线优先客户端（PWA / App）以及按学员个性化记忆的智能体编排层。本章说明各层的组件规格、接口约定与验收指标；凡涉及时延、带宽、准确率的数值，均为需在阶段 0 实测的工作假设。</p>
+  <h2>技术架构与技术路线<span class="en">JE Engine, the Agent Harness, and TIDAR-KAG</span></h2>
+  <p class="intro">山海同文的技术基座为 JurisEdu 已投入生产运行的 JE 引擎、Agent Harness 与 TIDAR-KAG。本项目在该基座之上新增三层能力：跨境弱网媒体层（直播 / 录播 / 内容包）、离线优先客户端（PWA / App）以及按学员个性化记忆的智能体编排层。本章说明各层的组件规格、接口约定与验收指标；凡涉及时延、带宽、准确率的数值，均为需在阶段 0 实测的工作假设。</p>
 
   <div class="callout gold"><strong>架构原则</strong><p>云中立（Kubernetes 声明式部署、S3 兼容存储、OpenTelemetry 观测、Model Gateway 抽象模型供应商）；数据驻留新加坡；智能体只提议不执行写操作；所有学习产物挂追加式哈希链证据；任一网络段退化均有确定的降级路径。</p></div>
 
@@ -492,7 +492,7 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
     <tr><td class="k">R3</td><td>持久学习者记忆</td><td>跨会话记忆仅有两条写路径：由真实掌握度快照派生的观察，以及用户逐字自述的目标；重复出现累加显著度；证据不足标「样本尚少」</td><td>按学员积累的记忆在结构上不可能编造</td></tr>
     <tr><td class="k">R4</td><td>模型网关</td><td>叠在 PII 去标识 → 新加坡驻留 → 故障转移 → 用量计量链之前，只增加槽位策略与响应净化；网关错误自动回退直连</td><td>按成本与合规选路，且不绕过任何护栏</td></tr>
     <tr><td class="k">R5</td><td>单次运行轨迹</td><td>每回合记录 route / ground / recall / tool / verify / end 步骤，只存安全元数据，不存问题与答案原文</td><td>试点期「为什么这样答」可回放；转人工比例可度量</td></tr>
-    <tr><td class="k">R6</td><td>教育 TIDAR KAG</td><td>本章第四节</td><td>低幻觉答疑与掌握度判定的核心</td></tr>
+    <tr><td class="k">R6</td><td>教育 TIDAR-KAG</td><td>本章第四节</td><td>低幻觉答疑与掌握度判定的核心</td></tr>
   </table></div>
   <div class="callout"><strong>创作链</strong><p>每件学习产物（作业、作文、评测、证书）都有一条追加式哈希链证据。模型没有写链的工具；写失败必上浮为错误而不是静默忽略。创作链是山海同文证书与学习报告可信的技术来源。</p></div>
 
@@ -501,14 +501,14 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
     <tr><th>步骤</th><th>动作</th><th>依据</th><th>时延预算（假设）</th></tr>
     <tr><td class="k">1 输入</td><td>学员的题、问或语音；会话开始注入档案记忆与掌握度快照（as-of 当前时间）</td><td>R3</td><td>—</td></tr>
     <tr><td class="k">2 Router</td><td>确定性路由定领域与意图；召回相关情节记忆（Top-k，按显著度与时间衰减）</td><td>R1 + R3</td><td>≤ 50 ms</td></tr>
-    <tr><td class="k">3 专才 Agent</td><td>伴学 / 复习 / 发音 / 对话 / 评测 / 班主任按定义清单调用白名单工具；答疑走 TIDAR KAG 检索并带出处</td><td>R2 工具注册表</td><td>≤ 2.5 s（P50）</td></tr>
+    <tr><td class="k">3 专才 Agent</td><td>伴学 / 复习 / 发音 / 对话 / 评测 / 班主任按定义清单调用白名单工具；答疑走 TIDAR-KAG 检索并带出处</td><td>R2 工具注册表</td><td>≤ 2.5 s（P50）</td></tr>
     <tr><td class="k">4 Verifier</td><td>一致性检查；批改由评分与复核两个独立 Agent 一致才写入，不一致取复核结论并降级为「待老师」</td><td>多智能体批改范式</td><td>≤ 1.5 s</td></tr>
     <tr><td class="k">5 回答或转人工</td><td>有出处的个性化回答；置信不足、主观题、写动作一律进入老师队列</td><td>弃权门 + propose → approve</td><td>—</td></tr>
     <tr><td class="k">6 写记忆</td><td>会话摘要写情节记忆；作答事件更新掌握度；轨迹入库</td><td>R3 + R5</td><td>异步</td></tr>
   </table></div>
 
-  <h3>四、TIDAR KAG：低幻觉的来源</h3>
-  <p>TIDAR KAG 为平台自研的「知识图谱可溯源生成」，区别于通用向量 RAG。先在法律域验证，再移植到教育课程图谱并已上线。三个支柱构成其不编造的技术保证。</p>
+  <h3>四、TIDAR-KAG：低幻觉的来源</h3>
+  <p>TIDAR-KAG 为平台自研的「知识图谱可溯源生成」，区别于通用向量 RAG。先在法律域验证，再移植到教育课程图谱并已上线。三个支柱构成其不编造的技术保证。</p>
   <div class="grid g3">
     <div class="card"><h4>时序 Temporal</h4><p>任何判断均基于某一时间点之前的真实作答快照（as-of）；两个时间点之间可做逐知识点差分：进步、回落、新评估、无变化，如实呈现。</p></div>
     <div class="card"><h4>可溯源 Provenance</h4><p>每个结论挂真实证据：作答记录、错题干、课程图谱中的先修 / 相关邻域；回答带出处，无出处则不答。</p></div>
@@ -534,7 +534,7 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
 
   <h3>五、每用户智能体花名册与四层记忆</h3>
   <div class="grid g3">
-    <div class="card"><h4>伴学 Agent</h4><p>规划路径、动态调难度、串讲知识点；答疑走 TIDAR KAG 带出处；离线时按预打包任务运行。</p></div>
+    <div class="card"><h4>伴学 Agent</h4><p>规划路径、动态调难度、串讲知识点；答疑走 TIDAR-KAG 带出处；离线时按预打包任务运行。</p></div>
     <div class="card"><h4>复习 Agent</h4><p>按 FSRS 遗忘曲线与掌握度编排间隔重复卡片；调度逻辑在端侧运行，离线可用。</p></div>
     <div class="card"><h4>发音教练 Agent（阶段 2）</h4><p>ASR + 声调 / 音素评分（GOP），逐字纠音，用老师音色示范正确读法。</p></div>
     <div class="card"><h4>情景对话 Agent（阶段 2）</h4><p>点餐、问路、面试等角色扮演，老师音色 TTS，纠错温和。</p></div>
@@ -695,7 +695,7 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
 
   <h4>S5 · 智能体答疑与转人工</h4>
   <div class="kv">
-    <dt>步骤</dt><dd>学员提问 → 确定性路由判为学习类 → 注入其薄弱知识点 → TIDAR KAG 在课程图谱内检索 → 有出处则作答并附来源；置信不足或超出范围则弃权，问题进入老师队列，老师在周三直播或文字回复；轨迹入库</dd>
+    <dt>步骤</dt><dd>学员提问 → 确定性路由判为学习类 → 注入其薄弱知识点 → TIDAR-KAG 在课程图谱内检索 → 有出处则作答并附来源；置信不足或超出范围则弃权，问题进入老师队列，老师在周三直播或文字回复；轨迹入库</dd>
     <dt>成功标准</dt><dd>有出处率 100%；转人工问题有闭环记录；每周抽样 50 条人工评审</dd>
   </div>
 
@@ -1124,7 +1124,7 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
     <dt>MVP</dt><dd>最小可用产品，能让一个真实班级完整用起来的最小功能集</dd>
     <dt>PWA</dt><dd>可安装的网页应用，可离线运行</dd>
     <dt>RTC</dt><dd>实时音视频</dd>
-    <dt>TIDAR KAG</dt><dd>平台自研的有出处知识增强生成，用于低幻觉答疑与掌握度判定</dd>
+    <dt>TIDAR-KAG</dt><dd>平台自研的有出处知识增强生成，用于低幻觉答疑与掌握度判定</dd>
     <dt>Agent Harness</dt><dd>智能体的构建、运行、评估与治理底座</dd>
     <dt>MOU / LOI</dt><dd>合作备忘录 / 意向书</dd>
     <dt>DPA</dt><dd>数据处理协议或数据保护附件</dd>
@@ -1351,13 +1351,13 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
 <section id="e5">
   <div class="eyebrow">05 · Workstream C</div>
   <h2>Technical validation and Phase 0<span class="en">技术验证与阶段 0</span></h2>
-  <p class="intro">Architecture, the Agent Harness, JE Engine orchestration and TIDAR KAG are described in §06; this chapter defines validation methods and pass criteria. MVP freeze requires all eight cards concluded. Network-related cards run once per country; the others run once.</p>
+  <p class="intro">Architecture, the Agent Harness, JE Engine orchestration and TIDAR-KAG are described in §06; this chapter defines validation methods and pass criteria. MVP freeze requires all eight cards concluded. Network-related cards run once per country; the others run once.</p>
 
   <h3>Reuse and build (summary)</h3>
   <div class="grid g2">
     <div class="card"><h4>Reused directly (in production, verified)</h4><ul>
       <li>Go backend, Postgres, Singapore Kubernetes, multi-tenant isolation with row-level security</li>
-      <li>JE Engine / JE Agent single-turn tool loop; TIDAR KAG sourced Q&amp;A</li>
+      <li>JE Engine / JE Agent single-turn tool loop; TIDAR-KAG sourced Q&amp;A</li>
       <li>Knowledge graph and mastery (compute-on-read); Wilson lower-bound judgement</li>
       <li>Multi-agent grading with review; teacher voice cloning (CosyVoice); photo recognition (Qwen-VL)</li>
       <li>Email verification codes, offline payment ledger, verifiable certificates, in-app assistant and tickets, seven-language interface packs</li>
@@ -1414,7 +1414,7 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
 <section id="e6">
   <div class="eyebrow">06 · Architecture &amp; technical route</div>
   <h2>Architecture and technical route<span class="en">技术架构与技术路线</span></h2>
-  <p class="intro">Shanhai Tongwen's technical base is the JE Engine, the Agent Harness and TIDAR KAG already in production at JurisEdu. This project adds three layers: cross-border weak-network media (live / recordings / content packs), an offline-first client (PWA / app), and per-learner personalised agent orchestration. This chapter specifies component design, interface conventions and acceptance metrics; every latency, bandwidth and accuracy figure is a working assumption to be measured in Phase 0.</p>
+  <p class="intro">Shanhai Tongwen's technical base is the JE Engine, the Agent Harness and TIDAR-KAG already in production at JurisEdu. This project adds three layers: cross-border weak-network media (live / recordings / content packs), an offline-first client (PWA / app), and per-learner personalised agent orchestration. This chapter specifies component design, interface conventions and acceptance metrics; every latency, bandwidth and accuracy figure is a working assumption to be measured in Phase 0.</p>
 
   <div class="callout gold"><strong>Architecture principles</strong><p>Cloud-neutral (declarative Kubernetes deployment, S3-compatible storage, OpenTelemetry observability, Model Gateway abstracting model vendors); data resident in Singapore; agents propose and never execute writes; every learning artefact carries append-only hash-chain evidence; every network segment has a defined degradation path.</p></div>
 
@@ -1467,7 +1467,7 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
     <tr><td class="k">R3</td><td>Persistent learner memory</td><td>Cross-session memory has only two write paths: observations derived from real mastery snapshots, and goals stated verbatim by the user; repeated observations accumulate salience; insufficient evidence is labelled “few samples”</td><td>Memory accumulated per learner cannot be fabricated by construction</td></tr>
     <tr><td class="k">R4</td><td>Model gateway</td><td>Placed before the existing PII de-identification → Singapore residency → failover → metering chain; adds only slot policy and response sanitisation; any gateway error falls back to direct calls</td><td>Routes by cost and compliance without bypassing any guardrail</td></tr>
     <tr><td class="k">R5</td><td>Per-run trace</td><td>Each turn records route / ground / recall / tool / verify / end steps, storing safe metadata only, never question or answer text</td><td>“Why this answer” can be replayed during the pilot; hand-off rate is measurable</td></tr>
-    <tr><td class="k">R6</td><td>Educational TIDAR KAG</td><td>Section 4</td><td>Core of low-hallucination Q&amp;A and mastery judgement</td></tr>
+    <tr><td class="k">R6</td><td>Educational TIDAR-KAG</td><td>Section 4</td><td>Core of low-hallucination Q&amp;A and mastery judgement</td></tr>
   </table></div>
   <div class="callout"><strong>Creation chain</strong><p>Every learning artefact (homework, essay, assessment, certificate) carries an append-only hash-chain record. Models have no tool that writes to the chain; a failed write surfaces as an error rather than being silently ignored. The creation chain is the technical source of trust for Shanhai Tongwen certificates and learning reports.</p></div>
 
@@ -1476,14 +1476,14 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
     <tr><th>Step</th><th>Action</th><th>Basis</th><th>Latency budget (assumed)</th></tr>
     <tr><td class="k">1 Input</td><td>Learner's item, question or speech; profile memory and mastery snapshot (as-of now) injected at session start</td><td>R3</td><td>—</td></tr>
     <tr><td class="k">2 Router</td><td>Deterministic routing fixes domain and intent; relevant episodic memory recalled (top-k by salience and recency)</td><td>R1 + R3</td><td>≤ 50 ms</td></tr>
-    <tr><td class="k">3 Specialist agent</td><td>Companion / review / pronunciation / conversation / assessment / homeroom calls allow-listed tools per manifest; Q&amp;A retrieves through TIDAR KAG with sources</td><td>R2 registry</td><td>≤ 2.5 s (P50)</td></tr>
+    <tr><td class="k">3 Specialist agent</td><td>Companion / review / pronunciation / conversation / assessment / homeroom calls allow-listed tools per manifest; Q&amp;A retrieves through TIDAR-KAG with sources</td><td>R2 registry</td><td>≤ 2.5 s (P50)</td></tr>
     <tr><td class="k">4 Verifier</td><td>Consistency check; grading is written only when the scoring and review agents agree, otherwise the review verdict is taken and the item is downgraded to “for teacher”</td><td>Multi-agent grading pattern</td><td>≤ 1.5 s</td></tr>
     <tr><td class="k">5 Answer or hand-off</td><td>Sourced, personalised answer; low confidence, subjective items and write actions go to the teacher queue</td><td>Abstention gate + propose → approve</td><td>—</td></tr>
     <tr><td class="k">6 Write memory</td><td>Session summary to episodic memory; answer events update mastery; trace stored</td><td>R3 + R5</td><td>Asynchronous</td></tr>
   </table></div>
 
-  <h3>4. TIDAR KAG: the source of low hallucination</h3>
-  <p>TIDAR KAG is the platform's own knowledge-graph, provenance-bound generation, distinct from generic vector RAG. It was validated in the legal domain first, then ported to the educational course graph and is in production. Three pillars provide the technical guarantee against fabrication.</p>
+  <h3>4. TIDAR-KAG: the source of low hallucination</h3>
+  <p>TIDAR-KAG is the platform's own knowledge-graph, provenance-bound generation, distinct from generic vector RAG. It was validated in the legal domain first, then ported to the educational course graph and is in production. Three pillars provide the technical guarantee against fabrication.</p>
   <div class="grid g3">
     <div class="card"><h4>Temporal</h4><p>Every judgement rests on a real answer snapshot as of a point in time; two points can be diffed per knowledge point — progress, regression, newly assessed, unchanged — and reported as such.</p></div>
     <div class="card"><h4>Provenance</h4><p>Every conclusion is attached to real evidence: answer records, missed items, prerequisite and related neighbourhoods in the course graph; answers carry sources, and without a source there is no answer.</p></div>
@@ -1509,7 +1509,7 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
 
   <h3>5. Per-learner agent roster and four-layer memory</h3>
   <div class="grid g3">
-    <div class="card"><h4>Study Companion</h4><p>Plans the path, adjusts difficulty, explains knowledge points; Q&amp;A via TIDAR KAG with sources; runs pre-packaged tasks when offline.</p></div>
+    <div class="card"><h4>Study Companion</h4><p>Plans the path, adjusts difficulty, explains knowledge points; Q&amp;A via TIDAR-KAG with sources; runs pre-packaged tasks when offline.</p></div>
     <div class="card"><h4>Review Agent</h4><p>Schedules spaced-repetition cards by the FSRS forgetting curve and mastery; scheduling runs on device and works offline.</p></div>
     <div class="card"><h4>Pronunciation Coach (Phase 2)</h4><p>ASR + tone / phoneme scoring (GOP), character-level correction, demonstrations in the teacher's voice.</p></div>
     <div class="card"><h4>Conversation Agent (Phase 2)</h4><p>Role play — ordering, asking directions, interviews — with teacher-voice TTS and gentle correction.</p></div>
@@ -1670,7 +1670,7 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
 
   <h4>S5 · Agent Q&amp;A and hand-off</h4>
   <div class="kv">
-    <dt>Steps</dt><dd>Learner asks → deterministic routing classifies as learning → weak points injected → TIDAR KAG retrieves within the course graph → sourced answer with citation; low confidence or out of scope → abstain, question enters the teacher queue, answered in Wednesday's live class or in writing; trace stored</dd>
+    <dt>Steps</dt><dd>Learner asks → deterministic routing classifies as learning → weak points injected → TIDAR-KAG retrieves within the course graph → sourced answer with citation; low confidence or out of scope → abstain, question enters the teacher queue, answered in Wednesday's live class or in writing; trace stored</dd>
     <dt>Success</dt><dd>Sourced rate 100%; handed-off questions closed with a record; 50 items reviewed by a person weekly</dd>
   </div>
 
@@ -2098,7 +2098,7 @@ main[lang="en"] p,main[lang="en"] li{max-width:70ch}
     <dt>MVP</dt><dd>Minimum viable product: the smallest feature set that lets a real class complete a full cycle</dd>
     <dt>PWA</dt><dd>Installable web application that runs offline</dd>
     <dt>RTC</dt><dd>Real-time audio and video</dd>
-    <dt>TIDAR KAG</dt><dd>The platform's provenance-bound knowledge-graph generation, used for low-hallucination Q&amp;A and mastery judgement</dd>
+    <dt>TIDAR-KAG</dt><dd>The platform's provenance-bound knowledge-graph generation, used for low-hallucination Q&amp;A and mastery judgement</dd>
     <dt>Agent Harness</dt><dd>The base for building, running, evaluating and governing agents</dd>
     <dt>MOU / LOI</dt><dd>Memorandum of understanding / letter of intent</dd>
     <dt>DPA</dt><dd>Data processing agreement or data protection schedule</dd>

@@ -6,13 +6,14 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>山海同文 SHANHAI TONGWEN 品牌手册</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 :root{
   --seal:#1F3AA8; --seal-deep:#14205C; --cinnabar:#A83E3E; --gold:#B8912F; --gold-soft:#E8D9A8; --good:#3F7A5A;
   --paper:#FBFAF6; --surface:#FFFFFF; --line:#DDE1EA; --mist:#EEF0F5; --slate:#5B6478; --ink:#1B2233;
   --accent:#1F3AA8; --accent-ink:#FFFFFF;
   --serif-zh:"Noto Serif SC","Songti SC","SimSun",serif; --sans-zh:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
   --serif-en:"EB Garamond",Georgia,serif; --sans-en:"Source Sans 3","Segoe UI",Arial,sans-serif; --mono:"IBM Plex Mono",Consolas,monospace;
+  --brush:"Ma Shan Zheng","Noto Serif SC","Songti SC",serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --seal:#8CA0F0; --seal-deep:#C7D1FA; --cinnabar:#E28484; --gold:#D9B65C; --gold-soft:#4A3F1E; --good:#7FBF9A;
@@ -24,6 +25,7 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans-en),var(--sans-zh);font-size:16px;line-height:1.75}
 a{color:var(--seal)}
+.wm{font-family:var(--brush);font-weight:400;letter-spacing:.05em}
 .wrap{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;max-width:1240px;margin:0 auto;padding:0 32px 96px}
 nav.toc{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding:40px 0 40px;border-right:1px solid var(--line)}
 nav.toc .brand{font-family:var(--serif-en),var(--serif-zh);font-size:22px;color:var(--seal-deep);margin-bottom:4px}
@@ -133,7 +135,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
 
 <div class="wrap">
 <nav class="toc" aria-label="目录">
-  <div class="brand">山海同文</div>
+  <div class="brand wm" style="font-size:26px">山海同文</div>
   <div class="sub">SHANHAI TONGWEN · Brand Book v2.0</div>
   <a href="#s1"><span class="n">01</span>品牌基石</a>
   <a href="#s2"><span class="n">02</span>品牌架构</a>
@@ -153,7 +155,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
 <header class="cover">
   <div>
     <div class="eyebrow">SHANHAI TONGWEN · Master Brand Book</div>
-    <h1>山海同文<br>品牌手册<span class="en">SHANHAI TONGWEN · Brand Book · Version 2.0</span></h1>
+    <h1><span class="wm" style="font-size:1.15em">山海同文</span><br>品牌手册<span class="en">SHANHAI TONGWEN · Brand Book · Version 2.0</span></h1>
     <p class="lede"><strong>山海同文（SHANHAI TONGWEN）</strong>是协会对外的<strong>主品牌</strong>——统领平台、出版、书院、研学与汉语学习；由 <strong>GACEE 全球文化教育交流协会</strong>主办背书。本手册定义主品牌的名称、标语、标识、色彩、字体、语气与应用，是全端一致表达的唯一准绳。主标语 <strong>ONE WORLD, ONE VERSE ｜ 一个世界，共写篇章</strong>。</p>
     <div class="meta"><span>版本 2.0 · 2026-09-14 · 主品牌定稿版</span><span>主品牌 山海同文 SHANHAI TONGWEN · 主办 GACEE</span><span>状态：定稿 · 分步落地</span></div>
   </div>
@@ -248,7 +250,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
     <div><div class="lg" style="background:#fff"><svg class="seal" role="img" aria-label="印章标 · 彩色" style="width:110px;height:110px"><use href="#seal"/></svg></div><div class="cap">正式印章 · 印章蓝（主版本）</div></div>
     <div><div class="lg" style="background:#14205C"><svg class="seal" role="img" aria-label="印章标 · 反白" style="width:110px;height:110px;filter:brightness(0) invert(1)"><use href="#seal"/></svg></div><div class="cap">反白版 · 深色底</div></div>
     <div><div class="lg" style="background:#fff"><svg class="seal" role="img" aria-label="印章标 · 单黑" style="width:110px;height:110px;filter:grayscale(1) contrast(1.4)"><use href="#seal"/></svg></div><div class="cap">单色版 · 传真 / 黑白印刷</div></div>
-    <div><div class="lg" style="background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px"><div style="font-family:var(--serif-zh);font-weight:900;font-size:20px;color:var(--seal-deep);letter-spacing:.05em">山海同文</div><div style="font-family:var(--serif-en);font-size:10.5px;letter-spacing:.12em;color:var(--slate)">SHANHAI TONGWEN</div></div><div class="cap">主品牌字标 · 数字识别主体</div></div>
+    <div><div class="lg" style="background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px"><div style="font-family:var(--brush);font-weight:400;font-size:34px;color:var(--seal-deep);letter-spacing:.04em;line-height:1">山海同文</div><div style="font-family:var(--serif-en);font-size:10.5px;letter-spacing:.12em;color:var(--slate);margin-top:6px">SHANHAI TONGWEN</div></div><div class="cap">主品牌字标 · 数字识别主体</div></div>
   </div>
 
   <div class="callout warn"><strong>现状问题，必须先解决</strong><p>目前协会只有一张位图印章（PNG，边缘有明显毛边与压缩痕迹），没有矢量源文件。网站、证书与印刷都需要矢量版。第一项品牌工作即是<strong>按现图重绘矢量印章</strong>（SVG / AI / PDF 三种格式），并在重绘时统一线宽、字环字距与星形比例。重绘不改变构图。</p></div>
@@ -317,14 +319,16 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
   <p class="intro">协会同时面对中文与英文读者，字体系统按「中文 + 英文」成对定义，并给 Office 场景指定安全替代，保证网站、PPT、证书三处观感一致。</p>
   <div class="tbl"><table>
     <tr><th>角色</th><th>中文</th><th>英文</th><th>Office 替代</th><th>用法</th></tr>
-    <tr><td>标题</td><td>Noto Serif SC（思源宋体）700 / 900</td><td>EB Garamond 500 / 600</td><td>宋体 / 华文中宋；Georgia</td><td>一级标题、字标、证书、活动名</td></tr>
+    <tr><td>字标（山海同文）</td><td><strong>Ma Shan Zheng</strong>（马善政 · 毛笔行楷）</td><td>— · 英文字标用 SHANHAI TONGWEN（§3）</td><td>楷体 / 华文行楷</td><td><strong>仅用于「山海同文」字标</strong>，不用于正文；如有指定书法字库可替换</td></tr>
+    <tr><td>标题</td><td>Noto Serif SC（思源宋体）700 / 900</td><td>EB Garamond 500 / 600</td><td>宋体 / 华文中宋；Georgia</td><td>一级标题、证书、活动名</td></tr>
     <tr><td>正文</td><td>Noto Sans SC（思源黑体）400 / 500</td><td>Source Sans 3 400 / 600</td><td>微软雅黑；Calibri</td><td>网页正文、PPT 正文、邮件</td></tr>
     <tr><td>数据与编号</td><td colspan="2">IBM Plex Mono 400 / 500</td><td>Consolas</td><td>证书编号、日期、表格数字、代码</td></tr>
   </table></div>
   <div class="spec">
-    <div class="lbl">标题样张 · Noto Serif SC 900 + EB Garamond</div>
-    <div style="font-family:var(--serif-zh);font-weight:900;font-size:34px;color:var(--seal-deep);line-height:1.25">连接世界，启迪未来</div>
-    <div style="font-family:var(--serif-en);font-size:22px;color:var(--slate);font-style:italic">Connecting the World, Inspiring the Future</div>
+    <div class="lbl">字标样张 · 山海同文书法体（Ma Shan Zheng）</div>
+    <div class="wm" style="font-size:54px;color:var(--seal-deep);line-height:1.1">山海同文</div>
+    <div style="font-family:var(--serif-en);font-size:15px;letter-spacing:.16em;color:var(--slate);margin-top:8px">SHANHAI TONGWEN · ONE WORLD, ONE VERSE</div>
+    <div class="small" style="margin-top:8px">书法字标是品牌资产：正式发布建议用指定书法字库出成<strong>矢量字标</strong>固化（本页 Ma Shan Zheng 为最接近的网页近似）。</div>
   </div>
   <div class="spec">
     <div class="lbl">正文样张 · Noto Sans SC 400 + Source Sans 3</div>

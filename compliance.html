@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>GACEE 合规 · 法务 · 财务建议书</title>
+<style>
+:root{
+  --bg:#F3F5F9; --surface:#FFFFFF; --surface-2:#ECEFF5; --line:#D9DEEA; --line-strong:#C4CBDB;
+  --ink:#161A24; --soft:#49505F; --faint:#7A8194;
+  --seal:#1F3AA8; --seal-deep:#14205C; --accent-soft:#E6EAF7; --gold:#8A6A1C; --gold-soft:#F2EAD4;
+  --cinnabar:#A83E3E; --cinnabar-soft:#F5E3E1; --good:#2E7D57; --good-soft:#DDEFE6;
+  --shadow:0 1px 2px rgba(20,25,40,.05),0 8px 24px rgba(20,25,40,.06); --radius:14px; --maxw:960px;
+  --serif:"Noto Serif SC",Georgia,"Songti SC",serif; --sans:"Noto Sans SC",system-ui,-apple-system,"PingFang SC",sans-serif; --mono:"IBM Plex Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1219;--surface:#161C28;--surface-2:#1D2432;--line:#293142;--line-strong:#374056;--ink:#E9ECF4;--soft:#AEB6C7;--faint:#828BA0;--seal:#8497EC;--seal-deep:#C7D1FA;--accent-soft:#1C2540;--gold:#D6B25A;--gold-soft:#2C2413;--cinnabar:#E7938C;--cinnabar-soft:#331C1B;--good:#74CF9C;--good-soft:#14271E;}}
+:root[data-theme="dark"]{--bg:#0E1219;--surface:#161C28;--surface-2:#1D2432;--line:#293142;--line-strong:#374056;--ink:#E9ECF4;--soft:#AEB6C7;--faint:#828BA0;--seal:#8497EC;--seal-deep:#C7D1FA;--accent-soft:#1C2540;--gold:#D6B25A;--gold-soft:#2C2413;--cinnabar:#E7938C;--cinnabar-soft:#331C1B;--good:#74CF9C;--good-soft:#14271E;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+a{color:var(--seal)}
+header.hero{padding:60px 0 30px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.18;margin:.35em 0 .3em;color:var(--seal-deep);text-wrap:balance}
+.hero .lede{font-size:17px;color:var(--soft);max-width:64ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--faint)}
+.meta b{color:var(--soft)}
+nav.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-bottom:8px}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 24px}
+nav.toc a{white-space:nowrap;font-size:13px;color:var(--soft);padding:5px 11px;border-radius:999px;text-decoration:none}
+nav.toc a:hover{background:var(--surface-2);color:var(--ink)}
+section{padding:38px 0;border-bottom:1px solid var(--line)}
+h2{font-family:var(--serif);font-weight:600;font-size:25px;margin:0 0 6px;color:var(--seal-deep);scroll-margin-top:60px}
+.snum{color:var(--seal);font-weight:700;margin-right:.5em;font-family:var(--mono);font-size:.8em}
+.sub{color:var(--soft);margin:0 0 20px;max-width:66ch}
+h3{font-family:var(--serif);font-weight:600;font-size:18px;margin:24px 0 8px}
+h4{font-size:15px;margin:16px 0 4px;color:var(--seal)}
+p{margin:8px 0}ul,ol{margin:8px 0;padding-left:1.3em}li{margin:.3em 0}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid;line-height:1.5;white-space:nowrap}
+.p-done{color:var(--good);background:var(--good-soft);border-color:color-mix(in srgb,var(--good) 30%,transparent)}
+.p-todo{color:var(--gold);background:var(--gold-soft);border-color:color-mix(in srgb,var(--gold) 30%,transparent)}
+.p-no{color:var(--cinnabar);background:var(--cinnabar-soft);border-color:color-mix(in srgb,var(--cinnabar) 30%,transparent)}
+.twrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px;background:var(--surface)}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--surface-2);font-weight:600;position:sticky;top:0;font-size:13px}
+tbody tr:last-child td{border-bottom:0}
+.rowhead{font-weight:600;white-space:nowrap}
+.note{display:flex;gap:12px;background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--seal);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:14px;color:var(--soft)}
+.note.warn{border-left-color:var(--cinnabar)}.note.gold{border-left-color:var(--gold)}.note.good{border-left-color:var(--good)}
+.note b{color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:680px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.card h4{margin:0 0 6px}
+.foot{padding:30px 0 60px;color:var(--faint);font-size:13px}
+.foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+/* firewall architecture diagram */
+.fw{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin:16px 0}
+.fw-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;align-items:stretch}
+@media(max-width:760px){.fw-row{grid-template-columns:1fr}}
+.ent{border:2px solid var(--line-strong);border-radius:12px;padding:14px;margin:6px;background:var(--surface-2)}
+.ent.core{border-color:var(--good);background:var(--good-soft)}
+.ent.tech{border-color:var(--seal)}
+.ent.mkt{border-color:var(--gold)}
+.ent .n{font-family:var(--serif);font-weight:700;font-size:15.5px;color:var(--seal-deep)}
+.ent .r{font-size:12px;color:var(--soft);margin-top:3px;display:block}
+.ent .t{font-size:11.5px;color:var(--faint);margin-top:8px;line-height:1.5}
+.fwall{display:flex;align-items:center;justify-content:center;position:relative}
+.fwall .bar{writing-mode:vertical-rl;text-orientation:mixed;font-size:10.5px;letter-spacing:.08em;color:var(--cinnabar);font-weight:700;border-left:2px dashed var(--cinnabar);border-right:2px dashed var(--cinnabar);padding:8px 3px;height:88%;display:flex;align-items:center;background:color-mix(in srgb,var(--cinnabar) 6%,transparent)}
+@media(max-width:760px){.fwall .bar{writing-mode:horizontal-tb;border:none;border-top:2px dashed var(--cinnabar);border-bottom:2px dashed var(--cinnabar);height:auto;width:90%;padding:4px 8px;justify-content:center;margin:2px auto}}
+.fw-contracts{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px;font-size:12.5px;color:var(--soft);display:flex;flex-wrap:wrap;gap:8px}
+.fw-contracts .chip{border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--surface-2)}
+.legend{font-size:12px;color:var(--faint);margin-top:10px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">GACEE · Compliance · Legal · Finance</div>
+    <h1>协会合规 · 法务 · 财务建议书</h1>
+    <p class="lede">为 GACEE（全球文化教育交流协会）在与 JE AI、资源方（Ray）等合作、以及推进山海同文项目全球试点时，建立一套<strong>合规与法务防火墙</strong>和<strong>顶级 NGO 财务会计制度</strong>，把当下与未来的签约、资金与合规风险降到最低。合作合同模版（中英）单独成文，见文末合同库。</p>
+    <div class="meta"><span><b>版本</b> 1.0（建议书 · 草案）</span><span><b>日期</b> 2026-09-14</span><span><b>适用法</b> 新加坡</span><span><b>状态</b> 待执业律师 / 会计师审定</span></div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#s1">01 现状与目标</a>
+  <a href="#s2">02 主体与防火墙架构</a>
+  <a href="#s3">03 合规防火墙清单</a>
+  <a href="#s4">04 NGO 财务会计制度</a>
+  <a href="#s5">05 合同框架与模版库</a>
+  <a href="#s6">06 合规路线图</a>
+  <a href="#s7">07 免责</a>
+</div></nav>
+
+<main class="wrap">
+
+  <section id="s1">
+    <h2><span class="snum">01</span>现状与目标</h2>
+    <p class="sub">先厘清协会当前的法律状态，据此把"现在可做/须做"和"注册为非营利后再启用"的保护分层。</p>
+    <div class="grid2">
+      <div class="card"><h4>现状 <span class="pill p-todo">待注册</span></h4><p><strong>协会尚未注册为合法的非营利组织。</strong>因此现阶段：可以普通合作方身份签约、参与项目收益；暂不强制适用非营利的利润分配限制与排除合伙/合营条款。但涉及资金、政府对接、未成年人数据的<strong>刚性风险仍须现在就防</strong>。</p></div>
+      <div class="card"><h4>目标</h4><p>① 以最小法务风险完成三方协议签署与四国试点；② 建立可复制的合同与合规框架，成为协会与所有项目/资源方合作的模版；③ 为协会未来注册为新加坡非营利/慈善主体铺好财务与治理底座。</p></div>
+    </div>
+    <div class="note warn"><div><b>现在就必须防的三条刚性风险（与是否注册无关）：</b>（1）<strong>反贿赂</strong>——乙方涉政府对接，一旦发生不当付款，全体三方及个人可能触犯新加坡《防止贪污法》并具域外效力；（2）<strong>未成年人数据与儿童保护</strong>——服务对象多为学生，须家长同意、数据最小化、背景审查；（3）<strong>资金与账户</strong>——收款账户与资金流须清晰、可追溯，避免个人代收与混同。</div></div>
+  </section>
+
+  <section id="s2">
+    <h2><span class="snum">02</span>主体与防火墙架构</h2>
+    <p class="sub">以"三主体 + 五道防火墙"的结构，隔离商业风险、保护协会与个人，并为未来非营利化预留干净边界。</p>
+
+    <div class="fw">
+      <div class="fw-row">
+        <div class="ent tech">
+          <span class="n">JE AI 科技公司</span>
+          <span class="r">营利 · 技术与平台方</span>
+          <span class="t">平台 / AI 研发与运营 · 商业交付与收款 · 承担技术与产品风险。持有平台知识产权。</span>
+        </div>
+        <div class="fwall"><div class="bar">技术许可 · 非转让</div></div>
+        <div class="ent core">
+          <span class="n">GACEE 协会</span>
+          <span class="r">非营利（待注册）· 母品牌 / 标准 / 背书</span>
+          <span class="t">教育资源、标准、背书；<strong>山海同文品牌权利人</strong>。不承担商业交付与收款主责。<strong>受保护的核心。</strong></span>
+        </div>
+        <div class="fwall"><div class="bar">资源登记 · 反绕开</div></div>
+        <div class="ent mkt">
+          <span class="n">Ray + 当地主体</span>
+          <span class="r">营利 · 市场与资源 / 当地运营</span>
+          <span class="t">海外市场拓展、政府/学校对接、当地落地。建议以公司主体签约，隔离个人责任。</span>
+        </div>
+      </div>
+      <div class="fw-contracts">
+        <span style="color:var(--faint)">合同连接：</span>
+        <span class="chip">三方框架协议（本库模版）</span>
+        <span class="chip">项目专项协议 PSA</span>
+        <span class="chip">品牌许可（协会→各方）</span>
+        <span class="chip">技术许可（JE AI→各方）</span>
+        <span class="chip">数据处理附录 DPA</span>
+        <span class="chip">儿童保护政策</span>
+      </div>
+      <div class="legend">红色虚线＝防火墙（风险隔离边界）；绿色＝受保护的协会核心。</div>
+    </div>
+
+    <h3>五道防火墙</h3>
+    <div class="twrap"><table>
+      <thead><tr><th>防火墙</th><th>隔离什么</th><th>怎么落地</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">① 法律实体</td><td>个人 / 机构责任</td><td>乙方以公司主体签约；协会尽快完成法人登记；各方独立主体、独立账户。</td></tr>
+        <tr><td class="rowhead">② 责任</td><td>连带 / 商业赔偿</td><td>协议写明各自领域负责、责任上限、互相赔偿；协会责任限于自身故意/重大过失。</td></tr>
+        <tr><td class="rowhead">③ 资金</td><td>资金混同 / 代收</td><td>分账、协会款项进协会名义账户；学生费用由 JE AI/当地主体收取；禁止个人代收。</td></tr>
+        <tr><td class="rowhead">④ 知识产权与品牌</td><td>IP 流失 / 品牌滥用</td><td>平台 IP 归 JE AI（许可非转让）；<strong>山海同文品牌归协会</strong>，受质控许可、可撤销。</td></tr>
+        <tr><td class="rowhead">⑤ 数据与合规</td><td>数据/贿赂/制裁</td><td>PDPA + 未成年人 + 儿童保护 + 反贿赂 + 制裁/出口管制，作为协议优先条款。</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>协会主体形态建议（新加坡）</h3>
+    <div class="twrap"><table>
+      <thead><tr><th>形态</th><th>特点</th><th>适用</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">社团 Society</td><td>ROS 注册，≥10 会员，治理简单，无独立法人有限责任</td><td>起步快、以会员活动为主；但签大额商业合同/雇佣时保护较弱</td></tr>
+        <tr><td class="rowhead">担保有限公司 CLG <span class="pill p-done">推荐</span></td><td>ACRA 注册的法人，成员责任以担保额为限，治理规范、利于对外签约与融资/资助</td><td><strong>推荐</strong>：需对外签署合同、接受资助、跨境运营的非营利首选</td></tr>
+        <tr><td class="rowhead">慈善 / IPC</td><td>在社团或 CLG 之上申请慈善地位；IPC 可开具可抵税收据</td><td>成熟后申请，提升公信与募捐能力，但合规要求更高（须先有稳健会计）</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note gold"><div><b>路径建议。</b>先注册 <strong>CLG</strong> 取得法人有限责任与规范治理 → 建立会计与治理制度 → 视需要申请<strong>慈善 / IPC</strong>。在此之前的过渡期，三方协议按"前瞻性非营利"条款签署（协会现按普通方，注册后启用环隔）。</div></div>
+  </section>
+
+  <section id="s3">
+    <h2><span class="snum">03</span>合规防火墙清单</h2>
+    <p class="sub">签约与运营中可直接执行的"做/不做"清单，降低法务风险。</p>
+    <div class="grid2">
+      <div class="card"><h4 style="color:var(--good)">应做 Do</h4><ul>
+        <li>所有对外合作先签<strong>框架协议</strong>，具体项目签<strong>专项协议</strong>。</li>
+        <li>乙方以<strong>公司主体</strong>签约；协会尽快登记 CLG。</li>
+        <li>资金进<strong>协会名义账户</strong>，凭证留痕、可审计（见 §04）。</li>
+        <li>与公职人员往来<strong>全程留痕</strong>、遵守礼品与款待规则。</li>
+        <li>学生数据取得<strong>家长同意</strong>；人员做<strong>背景审查</strong>。</li>
+        <li>用印/签署经<strong>授权代表</strong>、按分级授权（见 hub 平台）。</li>
+      </ul></div>
+      <div class="card"><h4 style="color:var(--cinnabar)">不做 Don't</h4><ul>
+        <li>不以<strong>个人名义</strong>代收项目/学生款项。</li>
+        <li>不作出<strong>超出协议范围</strong>的对外承诺或以三方名义担保。</li>
+        <li>不向政府官员提供任何<strong>不当好处 / 疏通费</strong>。</li>
+        <li>不把学生/客户数据用于<strong>项目外</strong>用途或未经同意跨境。</li>
+        <li>不签<strong>无适用法/无争议解决</strong>条款的合同（须新加坡法 + SIAC）。</li>
+        <li>不在无 <strong>DPA / 儿童保护</strong>附件的情况下上线试点。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section id="s4">
+    <h2><span class="snum">04</span>顶级 NGO 财务会计制度</h2>
+    <p class="sub">对标新加坡《慈善法》《慈善与 IPC 治理准则》与国际 NGO 最佳实践；即使尚未注册，也建议现在就按此建账，为注册与审计铺路。</p>
+
+    <h3>治理与内控</h3>
+    <ul>
+      <li><b>三权分立</b>：经办 / 审批 / 出纳分离；任何付款<strong>双人授权</strong>；大额按<strong>分级授权</strong>（≤5k 部门 / ≤20k 财务 / ≤100k 秘书长 / &gt;100k 理事会——与 hub 平台一致）。</li>
+      <li><b>理事会 + 财务委员会</b>监督；关联交易（与 JE AI、Ray）须<strong>回避、披露、公平独立</strong>。</li>
+      <li><b>预算</b>年度编制、按季复核；<strong>采购到付款（P2P）</strong>询价→合同→验收→请款→付款全程留痕（见 hub 平台）。</li>
+    </ul>
+
+    <h3>基金会计与科目</h3>
+    <div class="twrap"><table>
+      <thead><tr><th>要点</th><th>做法</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">限定 / 非限定资金</td><td>捐赠按用途分「限定用途」与「非限定」分别记账，专款专用，不得挪用。</td></tr>
+        <tr><td class="rowhead">会计科目表</td><td>收入（会费/捐赠/资助/项目/服务）· 支出（项目/教学/行政/筹款）· 资产/负债/基金结余，按项目与成本中心核算。</td></tr>
+        <tr><td class="rowhead">收付实现 vs 权责发生</td><td>建议权责发生制，编制收支表、资产负债表、现金流量表、基金变动表。</td></tr>
+        <tr><td class="rowhead">储备金政策</td><td>设定运营储备（如 6–12 个月支出），书面披露储备水平与理由。</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>银行、税务与报告</h3>
+    <ul>
+      <li><b>账户分离</b>：协会名义账户；收款、支付、储备分设；与 JE AI / Ray 资金<strong>零混同</strong>。</li>
+      <li><b>税务</b>：慈善可享税务豁免；<strong>IPC</strong> 可开具可抵税捐赠收据；关注 GST 门槛与跨境服务税务。</li>
+      <li><b>报告与审计</b>：年度财务报表 + <strong>外部审计</strong>（达规模）；向 ACRA / 慈善总监（COC）年报；遵守《治理准则》披露理事、关联交易、高管薪酬。</li>
+      <li><b>捐赠透明</b>：公开透明台账（呼应 hub 平台公益模块），大额捐赠与用途可追溯。</li>
+    </ul>
+    <div class="note good"><div><b>与平台打通。</b>hub.gacee.org 的<strong>合作·采购·结算</strong>与<strong>资产管理</strong>模块已按此制度设计（分级授权、AP 账龄、成本中心、审计留痕、固定资产折旧、无形资产台账），可直接作为协会财务系统的执行层。</div></div>
+  </section>
+
+  <section id="s5">
+    <h2><span class="snum">05</span>合同框架与模版库</h2>
+    <p class="sub">以三方框架协议为主模版，向下派生专项与配套模版；所有合作"框架 + 专项"两层签署。</p>
+    <div class="twrap"><table>
+      <thead><tr><th>模版</th><th>用途</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">三方战略合作框架协议</td><td>协会 × JE AI × 资源方(Ray) 的总框架；未来所有资源方合作的<strong>主模版</strong></td><td><a href="/tripartite-cn">中文版</a> · <a href="/tripartite-en">English</a> <span class="pill p-done">已备</span></td></tr>
+        <tr><td class="rowhead">项目专项协议 PSA</td><td>各国/学校的商业条款、职责、费用、结算</td><td><span class="pill p-todo">待起草</span></td></tr>
+        <tr><td class="rowhead">数据处理附录 DPA</td><td>PDPA、控制者/处理者、未成年人、跨境</td><td><span class="pill p-todo">待起草</span></td></tr>
+        <tr><td class="rowhead">儿童保护政策</td><td>背景审查、行为规范、事件报告</td><td><span class="pill p-todo">待起草</span></td></tr>
+        <tr><td class="rowhead">品牌许可协议</td><td>山海同文品牌使用条件（见品牌手册）</td><td><span class="pill p-todo">待起草</span></td></tr>
+        <tr><td class="rowhead">学校合作 MOU / 赞助 / 承包</td><td>学校试点、赞助、外包等派生模版</td><td><span class="pill p-todo">待起草</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="note"><div><b>模版化落地。</b>本库与 hub 平台「合同管理」模块对应：起草 → 法务审核 → 双方电子签 → 归档到期提醒，全程留痕。</div></div>
+  </section>
+
+  <section id="s6">
+    <h2><span class="snum">06</span>合规路线图</h2>
+    <p class="sub">与四国试点、9-26 介绍及三方签约节点对齐。</p>
+    <div class="twrap"><table>
+      <thead><tr><th>阶段</th><th>合规动作</th><th>产出</th></tr></thead>
+      <tbody>
+        <tr><td class="rowhead">立即（9 月）</td><td>三方框架协议定稿签署（前瞻性非营利条款）；乙方主体确认；反贿赂/儿童保护/DPA 附件就位</td><td>可签约、可试点</td></tr>
+        <tr><td class="rowhead">试点期（Q4）</td><td>各试点签 PSA + DPA；协会启动 <strong>CLG 注册</strong>；建立会计与账户体系</td><td>合规试点 + 法人主体</td></tr>
+        <tr><td class="rowhead">成长期</td><td>外部审计；申请<strong>慈善 / IPC</strong>；启用非营利环隔（调整分配与治理）</td><td>公信力 + 可募捐</td></tr>
+        <tr><td class="rowhead">非洲扩展</td><td>按同一框架 + 属地化 DPA/合规复制到非洲试点</td><td>可复制的合规底座</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="s7">
+    <h2><span class="snum">07</span>免责与下一步</h2>
+    <div class="note warn"><div><b>免责声明。</b>本建议书与配套合同模版由 AI 依据公开的新加坡法律框架与国际 NGO 最佳实践整理，<strong>不构成法律或财务意见</strong>。签署或据以行动前，须经<strong>具备新加坡执业资格的律师</strong>（合同/合规）与<strong>特许会计师</strong>（财务/税务）审阅、本地化并定稿。各试点国另需属地法律合规意见。</div></div>
+    <p><b>下一步（待负责人确定）：</b>① 委聘新加坡律师审定框架协议与 CLG 章程；② 委聘会计师搭建科目与账户；③ 起草 PSA / DPA / 儿童保护 / 品牌许可四份配套模版；④ 确认乙方签约主体与协会签署资格。</p>
+  </section>
+
+</main>
+
+<footer class="foot"><div class="wrap">
+  <span>山海同文 SHANHAI TONGWEN · GACEE 合规 · 法务 · 财务建议书 v1.0（草案）</span>
+  <span>noindex · 内部准备用途 · 非法律/财务意见</span>
+</div></footer>
+</body>
+</html>

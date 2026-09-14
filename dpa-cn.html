@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>数据处理附录 DPA（山海同文）— 草案模版</title>
+<style>
+:root{--seal:#1F3AA8;--seal-deep:#14205C;--gold:#8A6A1C;--cinnabar:#A83E3E;--good:#2E7D57;--paper:#FBFAF6;--surface:#FFFFFF;--line:#DCE0EA;--mist:#EEF0F5;--ink:#161A24;--soft:#4A5162;--faint:#7A8194;--serif:"Noto Serif SC","Songti SC","Times New Roman",serif;--sans:"Noto Sans SC","PingFang SC","Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0F1420;--surface:#161C28;--line:#2A3242;--mist:#1B2230;--ink:#E9ECF4;--soft:#AEB6C7;--faint:#7E879B;--seal:#8CA0F0;--seal-deep:#C7D1FA;--gold:#D6B25A;--cinnabar:#E7938C;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--sans);line-height:1.85;font-size:15px}
+.doc{max-width:820px;margin:0 auto;background:var(--surface);padding:56px 64px 96px;box-shadow:0 1px 3px rgba(20,25,40,.06),0 10px 40px rgba(20,25,40,.08)}
+.tag{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.draft{border:1px solid color-mix(in srgb,var(--cinnabar) 40%,transparent);background:color-mix(in srgb,var(--cinnabar) 8%,transparent);color:var(--ink);border-radius:8px;padding:12px 16px;margin:14px 0 26px;font-size:13px;line-height:1.8}
+.draft b{color:var(--cinnabar)}
+h1{font-family:var(--serif);font-weight:700;font-size:25px;line-height:1.35;margin:6px 0 4px;color:var(--seal-deep)}
+.sub{color:var(--soft);font-size:13.5px;margin:0 0 8px}
+.lang{float:right;font-size:12.5px}.lang a{color:var(--seal);text-decoration:none}
+h2{font-family:var(--serif);font-size:17px;color:var(--seal-deep);margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+h3{font-size:14.5px;margin:16px 0 4px;color:var(--seal)}
+p{margin:7px 0}ol{margin:6px 0;padding-left:24px}ol li{margin:6px 0}
+.parties p{margin:5px 0}
+.fill{display:inline-block;min-width:120px;border-bottom:1px solid var(--faint);color:var(--soft)}
+.note{background:var(--mist);border-left:3px solid var(--gold);border-radius:8px;padding:11px 15px;margin:14px 0;font-size:13.5px;color:var(--soft)}
+.note.warn{border-left-color:var(--cinnabar)}.note b{color:var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:12px 0}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+th{background:var(--mist);font-weight:700}
+.sign{display:grid;grid-template-columns:1fr 1fr;gap:22px 32px;margin-top:22px}
+.sign .b{border:1px solid var(--line);border-radius:8px;padding:14px}
+.sign .b h4{margin:0 0 10px;font-size:14px;color:var(--seal-deep)}
+.sign .b div{font-size:13px;color:var(--soft);margin:14px 0}
+.foot{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;font-size:12px;color:var(--faint)}
+.toc-mini{background:var(--mist);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:18px 0;font-size:13px;columns:2;column-gap:26px}
+.toc-mini a{color:var(--seal);text-decoration:none;display:block;padding:2px 0}
+@media(max-width:640px){.doc{padding:32px 20px 64px}.sign,.toc-mini{grid-template-columns:1fr;columns:1}}
+@media print{body{background:#fff}.doc{box-shadow:none;max-width:none;padding:0}.lang,.toc-mini{display:none}}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="lang"><a href="/dpa-en">English →</a></div>
+  <span class="tag">山海同文 · GACEE · 合作模版</span>
+  <h1>数据处理附录（DPA）<br><span style="font-size:16px;font-weight:500;color:var(--soft)">Data Processing Addendum · 含未成年人数据</span></h1>
+  <p class="sub">《三方战略合作框架协议》/《项目专项协议》附件 · 适用法律：新加坡 PDPA + 属地法 · 版本 1.0（草案，待法务审定）</p>
+
+  <div class="draft"><b>草案 — 仅供审阅。</b> 本附录规定平台处理个人数据（<b>含未成年学员数据</b>）的规则，作为框架协议 / PSA 的组成部分并优先适用于数据条款。本文件<b>不构成法律意见</b>，须经具备新加坡执业资格的律师并结合各试点国属地数据法（越南 PDPD、印尼 UU PDP、马来西亚 PDPA、新加坡 PDPA 等）本地化后方可签署。方括号 <span class="fill">[ ]</span> 为待填项。</div>
+
+  <div class="toc-mini">
+    <a href="#p">当事方与角色</a>
+    <a href="#c1">第一条 定义</a>
+    <a href="#c2">第二条 处理范围与指示</a>
+    <a href="#c3">第三条 未成年人数据</a>
+    <a href="#c4">第四条 安全措施</a>
+    <a href="#c5">第五条 子处理者</a>
+    <a href="#c6">第六条 跨境传输</a>
+    <a href="#c7">第七条 数据主体权利</a>
+    <a href="#c8">第八条 数据泄露通知</a>
+    <a href="#c9">第九条 审计与记录</a>
+    <a href="#c10">第十条 期限与终止后处理</a>
+    <a href="#c11">第十一条 适用法律与争议</a>
+    <a href="#sign">签署</a>
+  </div>
+
+  <h2 id="p">当事方与角色</h2>
+  <div class="parties">
+    <p><strong>数据控制者（Controller）：</strong><span class="fill">[决定处理目的与方式的一方——通常为项目学校 / 协会]</span></p>
+    <p><strong>数据处理者（Processor）：</strong>Juris&amp;Edu AI Technology Pte. Ltd.（"JE AI"），依控制者指示处理数据的平台运营方。</p>
+    <p class="note" style="margin-top:10px">角色按项目据实认定；如协会仅提供教研与背书、不决定处理目的，则控制者为学校，协会为另一独立控制者或不涉。</p>
+  </div>
+
+  <h2 id="c1">第一条 定义</h2>
+  <ol>
+    <li><b>个人数据：</b>可识别自然人的任何信息，含学员姓名、联系方式、作业与作答、语音与影像、学习行为与掌握度数据等。</li>
+    <li><b>未成年人：</b>依属地法未达成年年龄的学员（<span class="fill">[各国年龄以属地法为准]</span>）。</li>
+    <li><b>处理：</b>对个人数据的收集、记录、存储、使用、传输、删除等任何操作。</li>
+    <li><b>子处理者：</b>受处理者委托处理个人数据的第三方（如模型网关、语音合成、云与 CDN 服务商）。</li>
+  </ol>
+
+  <h2 id="c2">第二条 处理范围与指示</h2>
+  <ol>
+    <li><b>目的限定：</b>仅为<b>教学交付与学情分析</b>之目的处理数据；<b>不得</b>用于项目外用途或未经同意的营销。</li>
+    <li><b>按指示处理：</b>处理者仅按控制者<b>书面指示</b>处理；本附录及 PSA 即为初始书面指示。</li>
+    <li><b>数据最小化：</b>只收集达成目的所必需的数据；能匿名 / 去标识的即去标识（对接平台 PII 去标识）。</li>
+    <li><b>人员保密：</b>接触数据的人员负保密义务并经培训。</li>
+  </ol>
+
+  <h2 id="c3">第三条 未成年人数据（重点）</h2>
+  <div class="note warn"><div>服务对象多为未成年学员，此条为刚性要求。</div></div>
+  <ol>
+    <li><b>监护人同意：</b>处理未成年人数据前，须取得<b>家长 / 监护人可核验的同意</b>；同意记录留痕、可撤回。</li>
+    <li><b>最小化与用途：</b>仅用于教学；<b>不作画像式营销</b>、不向第三方出售。</li>
+    <li><b>语音 / 影像：</b>老师音色复刻与课堂音视频须单独授权、限本班教学用途、可删除。</li>
+    <li><b>可删除 / 可导出：</b>监护人可要求导出或删除其子女数据（法定留存除外）。</li>
+  </ol>
+
+  <h2 id="c4">第四条 安全措施</h2>
+  <ol>
+    <li>传输与存储<b>加密</b>；<b>最小权限</b>访问控制与操作留痕；定期安全评估。</li>
+    <li><b>数据驻留：</b>默认 <span class="fill">[新加坡]</span> 驻留；PII 去标识后再进入模型链路。</li>
+    <li>备份与恢复、密钥管理、终端与账户安全；弱网 / 离线场景下本地数据同样受保护。</li>
+  </ol>
+
+  <h2 id="c5">第五条 子处理者</h2>
+  <ol>
+    <li>处理者可委托子处理者，但须：事先<b>书面告知</b>控制者并取得<b>概括或逐一同意</b>；与子处理者签订<b>不低于本附录</b>的数据保护义务（义务传导）。</li>
+    <li>现有子处理者清单（示例）：<span class="fill">[模型网关 / 语音合成 / 云与 CDN 服务商]</span>；变更提前通知，控制者可合理反对。</li>
+    <li>处理者对子处理者的行为向控制者负责。</li>
+  </ol>
+
+  <h2 id="c6">第六条 跨境传输</h2>
+  <ol>
+    <li>如需将数据传出属地，须具<b>合法路径</b>（充分性认定、标准合同条款 / 约束性规则、或经同意等），并采取保障措施。</li>
+    <li>按属地法（<span class="fill">[越 PDPD / 印尼 UU PDP / 马 PDPA / 新 PDPA]</span>）履行跨境要求；出境记录留档。</li>
+  </ol>
+
+  <h2 id="c7">第七条 数据主体权利</h2>
+  <ol>
+    <li>处理者<b>协助</b>控制者应对数据主体（或其监护人）的查阅、更正、删除、撤回同意等请求，在 <span class="fill">[合理期限]</span> 内响应。</li>
+    <li>不得妨碍数据主体行使法定权利。</li>
+  </ol>
+
+  <h2 id="c8">第八条 数据泄露通知</h2>
+  <ol>
+    <li>发生或疑似发生个人数据泄露，处理者<b>不迟于知悉后 <span class="fill">[72]</span> 小时</b>通知控制者，说明性质、范围、影响与已采取 / 拟采取的措施。</li>
+    <li>依属地法要求配合向监管机构与受影响个人的通报。</li>
+  </ol>
+
+  <h2 id="c9">第九条 审计与记录</h2>
+  <ol>
+    <li>处理者保存处理活动记录，并在合理通知下配合控制者<b>审计 / 核查</b>（含第三方审计报告替代实地审计）。</li>
+    <li>记录留存期限与格式按属地法与《合规建议书》§04。</li>
+  </ol>
+
+  <h2 id="c10">第十条 期限与终止后处理</h2>
+  <ol>
+    <li>本附录随框架协议 / PSA 存续。</li>
+    <li>终止后，处理者按控制者选择<b>返还或删除</b>全部个人数据及副本（法定留存除外），并出具确认。</li>
+  </ol>
+
+  <h2 id="c11">第十一条 适用法律与争议</h2>
+  <p>本附录适用<b>新加坡</b>法律并结合各试点国属地数据法；争议提交 <b>SIAC</b> 在新加坡仲裁。属地法有强制规定的，从其规定。</p>
+
+  <h2 id="sign">签署</h2>
+  <div class="sign">
+    <div class="b"><h4>数据控制者</h4><div>授权代表：<span class="fill"> </span></div><div>职务 / 日期：<span class="fill"> </span></div><div>签章：<span class="fill"> </span></div></div>
+    <div class="b"><h4>数据处理者 · JE AI</h4><div>授权代表：<span class="fill"> </span></div><div>职务 / 日期：<span class="fill"> </span></div><div>签章：<span class="fill"> </span></div></div>
+  </div>
+
+  <div class="foot">山海同文 SHANHAI TONGWEN · GACEE 全球文化教育交流协会 · 数据处理附录模版 v1.0（草案）· 不构成法律意见 · noindex</div>
+</div>
+</body>
+</html>

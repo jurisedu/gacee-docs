@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Data Processing Addendum (SHANHAI TONGWEN) — Draft Template</title>
+<style>
+:root{--seal:#1F3AA8;--seal-deep:#14205C;--gold:#8A6A1C;--cinnabar:#A83E3E;--good:#2E7D57;--paper:#FBFAF6;--surface:#FFFFFF;--line:#DCE0EA;--mist:#EEF0F5;--ink:#161A24;--soft:#4A5162;--faint:#7A8194;--serif:"Noto Serif SC","Songti SC","Times New Roman",serif;--sans:"Noto Sans SC","PingFang SC","Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0F1420;--surface:#161C28;--line:#2A3242;--mist:#1B2230;--ink:#E9ECF4;--soft:#AEB6C7;--faint:#7E879B;--seal:#8CA0F0;--seal-deep:#C7D1FA;--gold:#D6B25A;--cinnabar:#E7938C;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--sans);line-height:1.85;font-size:15px}
+.doc{max-width:820px;margin:0 auto;background:var(--surface);padding:56px 64px 96px;box-shadow:0 1px 3px rgba(20,25,40,.06),0 10px 40px rgba(20,25,40,.08)}
+.tag{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.draft{border:1px solid color-mix(in srgb,var(--cinnabar) 40%,transparent);background:color-mix(in srgb,var(--cinnabar) 8%,transparent);color:var(--ink);border-radius:8px;padding:12px 16px;margin:14px 0 26px;font-size:13px;line-height:1.8}
+.draft b{color:var(--cinnabar)}
+h1{font-family:var(--serif);font-weight:700;font-size:24px;line-height:1.35;margin:6px 0 4px;color:var(--seal-deep)}
+.sub{color:var(--soft);font-size:13.5px;margin:0 0 8px}
+.lang{float:right;font-size:12.5px}.lang a{color:var(--seal);text-decoration:none}
+h2{font-family:var(--serif);font-size:17px;color:var(--seal-deep);margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+h3{font-size:14.5px;margin:16px 0 4px;color:var(--seal)}
+p{margin:7px 0}ol{margin:6px 0;padding-left:24px}ol li{margin:6px 0}
+.parties p{margin:5px 0}
+.fill{display:inline-block;min-width:120px;border-bottom:1px solid var(--faint);color:var(--soft)}
+.note{background:var(--mist);border-left:3px solid var(--gold);border-radius:8px;padding:11px 15px;margin:14px 0;font-size:13.5px;color:var(--soft)}
+.note.warn{border-left-color:var(--cinnabar)}.note b{color:var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:12px 0}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+th{background:var(--mist);font-weight:700}
+.sign{display:grid;grid-template-columns:1fr 1fr;gap:22px 32px;margin-top:22px}
+.sign .b{border:1px solid var(--line);border-radius:8px;padding:14px}
+.sign .b h4{margin:0 0 10px;font-size:14px;color:var(--seal-deep)}
+.sign .b div{font-size:13px;color:var(--soft);margin:14px 0}
+.foot{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;font-size:12px;color:var(--faint)}
+.toc-mini{background:var(--mist);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:18px 0;font-size:13px;columns:2;column-gap:26px}
+.toc-mini a{color:var(--seal);text-decoration:none;display:block;padding:2px 0}
+@media(max-width:640px){.doc{padding:32px 20px 64px}.sign,.toc-mini{grid-template-columns:1fr;columns:1}}
+@media print{body{background:#fff}.doc{box-shadow:none;max-width:none;padding:0}.lang,.toc-mini{display:none}}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="lang"><a href="/dpa-cn">中文 →</a></div>
+  <span class="tag">SHANHAI TONGWEN · GACEE · Cooperation template</span>
+  <h1>Data Processing Addendum (DPA)<br><span style="font-size:15px;font-weight:500;color:var(--soft)">Including minors' data</span></h1>
+  <p class="sub">Schedule to the Framework / PSA · Governing law: Singapore PDPA + local law · v1.0 (draft, subject to legal review)</p>
+
+  <div class="draft"><b>Draft — for review only.</b> This Addendum sets the rules for processing personal data (<b>including minors' learner data</b>) on the platform, forms part of the Framework / PSA and prevails on data terms. It is <b>not legal advice</b> and must be localised by a Singapore-qualified lawyer against each pilot country's data law (Vietnam PDPD, Indonesia UU PDP, Malaysia PDPA, Singapore PDPA, etc.). Square brackets <span class="fill">[ ]</span> require completion.</div>
+
+  <div class="toc-mini">
+    <a href="#p">Parties & roles</a>
+    <a href="#c1">1. Definitions</a>
+    <a href="#c2">2. Scope & instructions</a>
+    <a href="#c3">3. Minors' data</a>
+    <a href="#c4">4. Security measures</a>
+    <a href="#c5">5. Sub-processors</a>
+    <a href="#c6">6. Cross-border transfers</a>
+    <a href="#c7">7. Data-subject rights</a>
+    <a href="#c8">8. Breach notification</a>
+    <a href="#c9">9. Audit & records</a>
+    <a href="#c10">10. Term & post-termination</a>
+    <a href="#c11">11. Governing law & disputes</a>
+    <a href="#sign">Signatures</a>
+  </div>
+
+  <h2 id="p">Parties & roles</h2>
+  <div class="parties">
+    <p><strong>Controller:</strong> <span class="fill">[the party determining purposes & means — typically the project school / the Association]</span></p>
+    <p><strong>Processor:</strong> Juris&amp;Edu AI Technology Pte. Ltd. ("JE AI"), the platform operator processing data on the Controller's instructions.</p>
+    <p class="note" style="margin-top:10px">Roles are determined per project on the facts; if the Association only provides pedagogy and endorsement and does not determine purposes, the school is Controller and the Association is a separate controller or not involved.</p>
+  </div>
+
+  <h2 id="c1">1. Definitions</h2>
+  <ol>
+    <li><b>Personal data:</b> any information identifying a natural person — learner names, contacts, homework and answers, voice and images, learning behaviour and mastery data, etc.</li>
+    <li><b>Minor:</b> a learner below the age of majority under local law (<span class="fill">[ages per each country's law]</span>).</li>
+    <li><b>Processing:</b> any operation on personal data — collection, recording, storage, use, transfer, deletion, etc.</li>
+    <li><b>Sub-processor:</b> a third party engaged by the Processor to process personal data (e.g., model gateway, voice synthesis, cloud and CDN providers).</li>
+  </ol>
+
+  <h2 id="c2">2. Scope & instructions</h2>
+  <ol>
+    <li><b>Purpose limitation:</b> data is processed only for <b>teaching delivery and learning analytics</b>; <b>not</b> for out-of-project purposes or marketing without consent.</li>
+    <li><b>On instructions:</b> the Processor processes only on the Controller's <b>documented instructions</b>; this Addendum and the PSA are the initial instructions.</li>
+    <li><b>Data minimisation:</b> collect only what is necessary; de-identify where possible (platform PII de-identification).</li>
+    <li><b>Personnel confidentiality:</b> those with access are bound by confidentiality and trained.</li>
+  </ol>
+
+  <h2 id="c3">3. Minors' data (priority)</h2>
+  <div class="note warn"><div>Learners are mostly minors; this clause is a hard requirement.</div></div>
+  <ol>
+    <li><b>Guardian consent:</b> obtain <b>verifiable parent/guardian consent</b> before processing minors' data; consent is logged and withdrawable.</li>
+    <li><b>Minimisation & purpose:</b> teaching only; <b>no profiling-based marketing</b>, no sale to third parties.</li>
+    <li><b>Voice / video:</b> teacher-voice cloning and classroom media require separate authorisation, are limited to that class, and are deletable.</li>
+    <li><b>Deletion / export:</b> guardians may request export or deletion of their child's data (subject to legal retention).</li>
+  </ol>
+
+  <h2 id="c4">4. Security measures</h2>
+  <ol>
+    <li><b>Encryption</b> in transit and at rest; <b>least-privilege</b> access control and audit trails; periodic security assessment.</li>
+    <li><b>Data residency:</b> default <span class="fill">[Singapore]</span>; PII de-identified before entering the model pipeline.</li>
+    <li>Backup and recovery, key management, endpoint and account security; local data under weak-network/offline scenarios is equally protected.</li>
+  </ol>
+
+  <h2 id="c5">5. Sub-processors</h2>
+  <ol>
+    <li>The Processor may engage sub-processors, provided it: gives the Controller <b>prior written notice</b> and obtains <b>general or specific consent</b>; and imposes data-protection obligations <b>no less protective</b> than this Addendum (flow-down).</li>
+    <li>Current sub-processor list (illustrative): <span class="fill">[model gateway / voice synthesis / cloud & CDN providers]</span>; changes on prior notice, with the Controller able to object on reasonable grounds.</li>
+    <li>The Processor remains responsible to the Controller for its sub-processors.</li>
+  </ol>
+
+  <h2 id="c6">6. Cross-border transfers</h2>
+  <ol>
+    <li>Any transfer out of the jurisdiction requires a <b>lawful basis</b> (adequacy, standard contractual clauses / binding rules, or consent, etc.) and appropriate safeguards.</li>
+    <li>Comply with local-law transfer requirements (<span class="fill">[Vietnam PDPD / Indonesia UU PDP / Malaysia PDPA / Singapore PDPA]</span>); transfer records are kept.</li>
+  </ol>
+
+  <h2 id="c7">7. Data-subject rights</h2>
+  <ol>
+    <li>The Processor <b>assists</b> the Controller with data-subject (or guardian) requests — access, correction, deletion, withdrawal of consent — responding within <span class="fill">[a reasonable period]</span>.</li>
+    <li>It shall not impede the exercise of statutory rights.</li>
+  </ol>
+
+  <h2 id="c8">8. Breach notification</h2>
+  <ol>
+    <li>On an actual or suspected personal-data breach, the Processor notifies the Controller <b>no later than <span class="fill">[72]</span> hours</b> after becoming aware, describing nature, scope, impact and measures taken/proposed.</li>
+    <li>It cooperates with notifications to regulators and affected individuals as required by local law.</li>
+  </ol>
+
+  <h2 id="c9">9. Audit & records</h2>
+  <ol>
+    <li>The Processor keeps records of processing and, on reasonable notice, supports the Controller's <b>audit/verification</b> (third-party audit reports may substitute for on-site audits).</li>
+    <li>Retention period and format per local law and Compliance Memo §04.</li>
+  </ol>
+
+  <h2 id="c10">10. Term & post-termination</h2>
+  <ol>
+    <li>This Addendum lasts as long as the Framework / PSA.</li>
+    <li>On termination, the Processor <b>returns or deletes</b> all personal data and copies at the Controller's choice (subject to legal retention) and certifies it.</li>
+  </ol>
+
+  <h2 id="c11">11. Governing law & disputes</h2>
+  <p>This Addendum is governed by the laws of <b>Singapore</b> together with each pilot country's data law; disputes go to <b>SIAC</b> in Singapore. Mandatory local-law provisions prevail.</p>
+
+  <h2 id="sign">Signatures</h2>
+  <div class="sign">
+    <div class="b"><h4>Controller</h4><div>Authorised representative: <span class="fill"> </span></div><div>Title / date: <span class="fill"> </span></div><div>Seal/signature: <span class="fill"> </span></div></div>
+    <div class="b"><h4>Processor · JE AI</h4><div>Authorised representative: <span class="fill"> </span></div><div>Title / date: <span class="fill"> </span></div><div>Seal/signature: <span class="fill"> </span></div></div>
+  </div>
+
+  <div class="foot">SHANHAI TONGWEN · Global Association of Cultural and Educational Exchange (GACEE) · Data Processing Addendum template v1.0 (draft) · Not legal advice · noindex</div>
+</div>
+</body>
+</html>

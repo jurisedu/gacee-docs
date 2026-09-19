@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>技术规格附件(Schedule 1)· 第一阶段 — 草案骨架</title>
+<style>
+:root{--seal:#1F3AA8;--seal-deep:#14205C;--gold:#8A6A1C;--cinnabar:#A83E3E;--good:#2E7D57;--surface:#FFFFFF;--line:#DCE0EA;--mist:#EEF0F5;--ink:#161A24;--soft:#4A5162;--faint:#7A8194;--serif:"Noto Serif SC","Songti SC","Times New Roman",serif;--sans:"Noto Sans SC","PingFang SC","Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--surface:#161C28;--line:#2A3242;--mist:#1B2230;--ink:#E9ECF4;--soft:#AEB6C7;--faint:#7E879B;--seal:#8CA0F0;--seal-deep:#C7D1FA;--gold:#D6B25A;--cinnabar:#E7938C;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--sans);line-height:1.8;font-size:14.5px}
+.doc{max-width:880px;margin:0 auto;background:var(--surface);padding:54px 60px 90px;box-shadow:0 1px 3px rgba(20,25,40,.06),0 10px 40px rgba(20,25,40,.08)}
+.tag{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.draft{border:1px solid color-mix(in srgb,var(--cinnabar) 40%,transparent);background:color-mix(in srgb,var(--cinnabar) 8%,transparent);border-radius:8px;padding:12px 16px;margin:14px 0 22px;font-size:13px;line-height:1.8}
+.draft b{color:var(--cinnabar)}
+h1{font-family:var(--serif);font-weight:700;font-size:23px;line-height:1.3;margin:6px 0 4px;color:var(--seal-deep)}
+.sub{color:var(--soft);font-size:13px;margin:0 0 6px}
+.lang{float:right;font-size:12.5px}.lang a{color:var(--seal);text-decoration:none}
+h2{font-family:var(--serif);font-size:16.5px;color:var(--seal-deep);margin:26px 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+h2 .n{display:inline-block;width:24px;height:24px;line-height:24px;text-align:center;background:var(--seal);color:#fff;border-radius:6px;font-size:13px;margin-right:8px;font-family:var(--sans)}
+p{margin:7px 0}ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;padding:0 6px;border-radius:4px;white-space:nowrap;border:1px solid;vertical-align:middle}
+.mvp{color:var(--good);border-color:color-mix(in srgb,var(--good) 45%,transparent);background:color-mix(in srgb,var(--good) 8%,transparent)}
+.next{color:var(--gold);border-color:color-mix(in srgb,var(--gold) 45%,transparent);background:color-mix(in srgb,var(--gold) 8%,transparent)}
+.poc{color:var(--cinnabar);border-color:color-mix(in srgb,var(--cinnabar) 45%,transparent);background:color-mix(in srgb,var(--cinnabar) 8%,transparent)}
+table{border-collapse:collapse;width:100%;font-size:12.5px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--mist);font-weight:700}
+.note{background:var(--mist);border-left:3px solid var(--gold);border-radius:8px;padding:10px 15px;margin:12px 0;font-size:13px;color:var(--soft)}
+.note.ring{border-left-color:var(--good)}.note.warn{border-left-color:var(--cinnabar)}.note b{color:var(--ink)}
+.fill{display:inline-block;min-width:80px;border-bottom:1px solid var(--faint);color:var(--soft)}
+.foot{margin-top:36px;border-top:1px solid var(--line);padding-top:12px;font-size:12px;color:var(--faint)}
+.toc-mini{background:var(--mist);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:16px 0;font-size:12.5px;columns:2;column-gap:24px}
+.toc-mini a{color:var(--seal);text-decoration:none;display:block;padding:2px 0}
+@media(max-width:640px){.doc{padding:32px 20px 64px}.toc-mini{columns:1}}
+@media print{@page{size:A4;margin:15mm 14mm 16mm}body{background:#fff;font-size:11px}.doc{box-shadow:none;max-width:none;padding:0}.lang,.toc-mini{display:none}h2{break-after:avoid}table,tr,.note,.draft{break-inside:avoid}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="lang"><a href="/tech-annex-en">English →</a></div>
+  <span class="tag">山海同文 · GACEE · 技术规格附件(草案骨架)</span>
+  <h1>技术规格附件(Schedule 1)· 第一阶段<br><span style="font-size:14px;font-weight:500;color:var(--soft)">Technical Specification Annex · Phase 1</span></h1>
+  <p class="sub">《项目专项协议(PSA)》附件一 · 适用于非洲及东南亚试点 · 版本 0.1(草案骨架,待律师与技术团队定稿)</p>
+
+  <div class="draft"><b>草案骨架 — 内部与谈判用。</b> 本附件列明<b>平台就本项目应满足的功能与技术要求</b>,为 PSA 附件一。<b>重要:本附件仅规定"平台应具备什么能力",不设知识产权、源代码或数据归属条款</b> —— 这些由 PSA 统一约定:<b>平台为甲方既有 IP、以非转让许可提供(PSA 第5条)</b>;<b>业务连续性以数据/内容可携实现,不做核心源码托管(PSA 第10条)</b>;数据归属见 DPA。功能标注 <span class="pill mvp">MVP</span> 第一阶段 / <span class="pill next">后续</span> 迭代 / <span class="pill poc">待PoC</span> 以试测结论为准。方括号 <span class="fill">[ ]</span> 为待填项。</div>
+
+  <div class="toc-mini">
+    <a href="#a">A. 架构与功能模块</a>
+    <a href="#b">B. 角色 · 档案 · 内容</a>
+    <a href="#c">C. AI 能力</a>
+    <a href="#d">D. 教学交付</a>
+    <a href="#e">E. 非功能要求</a>
+    <a href="#f">F. 数据分析与学习闭环</a>
+    <a href="#g">G. AI 治理与安全</a>
+    <a href="#h">H. 数据保护与网络安全</a>
+    <a href="#i">I. 服务水平与灾备</a>
+    <a href="#j">J. 集成 · 扩展 · 成本</a>
+    <a href="#k">K. 验收与分阶段</a>
+    <a href="#x">X. 不在本附件处理的事项</a>
+  </div>
+
+  <h2 id="a"><span class="n">A</span>核心架构与功能模块</h2>
+  <p>平台采模块化、可扩展、API 优先、云端架构;模块可独立增/换/升级而不重构全系统。第一阶段交付以下模块的 MVP 能力,其余按 PSA 变更管理迭代:</p>
+  <table>
+    <tr><th style="width:60%">模块</th><th>阶段</th></tr>
+    <tr><td>用户与身份、学校/机构、班级/学习者、课程体系管理</td><td><span class="pill mvp">MVP</span></td></tr>
+    <tr><td>数字学习内容管理(LCMS)、作业与测评、考勤与课堂参与</td><td><span class="pill mvp">MVP</span></td></tr>
+    <tr><td>AI 批改、AI 虚拟学习伙伴、AI 教师助手、个性化学习引擎、ILAP 引擎</td><td><span class="pill mvp">MVP</span></td></tr>
+    <tr><td>学习数据分析、进度报告、参与度与预警、在线/离线学习</td><td><span class="pill mvp">MVP</span></td></tr>
+    <tr><td>在线直播教学管理、课程录像与媒体管理</td><td><span class="pill poc">待PoC</span></td></tr>
+    <tr><td>通知与沟通、系统后台、数据与报表、权限与审计、API 与第三方集成</td><td><span class="pill mvp">MVP</span></td></tr>
+    <tr><td>AI 多智能体管理与治理系统</td><td><span class="pill mvp">MVP</span></td></tr>
+  </table>
+
+  <h2 id="b"><span class="n">B</span>角色 · 学习者档案 · 内容管理</h2>
+  <ul>
+    <li><b>角色与权限:</b>学习者 / 教师 / 学校管理员 / 国家(地区)项目管理员 / 全球项目管理员 / 超级管理员;支持"全球→国家→机构→学校→班级→学习者"多层级。<span class="pill mvp">MVP</span></li>
+    <li><b>学习者数字档案:</b>持续更新的学习画像(基本资料、能力维度、出勤/作业/测评、AI 记录、参与度、优势/薄弱、目标与 ILAP、HSK 进度),随学习数据动态更新。<span class="pill mvp">MVP</span></li>
+    <li><b>课程内容管理:</b>课程/单元/课次/教学目标/生词/汉字/语法/听说读写/测验/作业/模拟考;可关联 HSK 等级与能力指标;架构支持 HSK 体系更新而不重构。<span class="pill mvp">MVP</span></li>
+  </ul>
+
+  <h2 id="c"><span class="n">C</span>AI 能力</h2>
+  <table>
+    <tr><th style="width:34%">能力</th><th style="width:12%">阶段</th><th>要点</th></tr>
+    <tr><td>个性化学习引擎 / ILAP</td><td><span class="pill mvp">MVP</span></td><td>持续分析掌握/未掌握/重复错误/进度,生成并动态调整个性化路径与行动计划;教师可查看/修改/批准/覆盖</td></tr>
+    <tr><td>AI 虚拟学习伙伴</td><td><span class="pill mvp">MVP</span></td><td>对话/词汇/语法/读写听说/情景/复习/小测;按水平自适应;采"提示→引导→示例→纠正→再练"教学逻辑,非直接给答案</td></tr>
+    <tr><td>AI 批改</td><td><span class="pill mvp">MVP</span></td><td>客观题多智能体批改+复核;给分/错误类型/解释/建议;教师可接受/修改/拒绝,留痕;写作复杂题转教师</td></tr>
+    <tr><td>AI 口语与发音</td><td><span class="pill poc">待PoC</span></td><td>语音识别、声调/拼音/发音反馈、口语测评;ASR 选型与非洲/属地音频链路以 PoC 结论为准</td></tr>
+    <tr><td>AI 汉字与写作</td><td><span class="pill next">后续</span></td><td>笔画/笔顺/书写、手写识别、写作评估</td></tr>
+    <tr><td>AI 教师助手 / 内容生成</td><td><span class="pill mvp">MVP</span></td><td>教案/备课/题目/分层练习/学情分析/报告草稿;发现薄弱自动生成针对性练习并关联能力指标</td></tr>
+    <tr><td>AI 多智能体架构</td><td><span class="pill mvp">MVP</span></td><td>学习者/评估/课程/个性化/教师/报告/参与度/内容/对话等专才智能体;<b>各智能体权限分级,不默认全库访问</b></td></tr>
+  </table>
+  <div class="note"><b>低幻觉。</b>AI 输出以平台 TIDAR-KAG 检索证据为基,记忆仅作检索证据、不当事实,降低幻觉。</div>
+
+  <h2 id="d"><span class="n">D</span>教学交付(直播与录像)</h2>
+  <ul>
+    <li><b>在线直播:</b>与经批准的第三方会议平台(Zoom / Google Meet / <span class="fill">[Voox 等]</span>)集成;建课/排期/生成链接/通知/考勤/在线时长/与班级关联;第三方 API 限制时提供半自动考勤。<span class="pill poc">待PoC</span>(跨境弱网 RTC 与属地链路)</li>
+    <li><b>课程录像:</b>按 国家→学校→班级→课程→日期→教师 分类检索;续播/低清下载/离线观看;<span class="pill next">后续</span>自动字幕/转录/章节/内容搜索。</li>
+  </ul>
+
+  <h2 id="e"><span class="n">E</span>非功能要求(核心)</h2>
+  <table>
+    <tr><th style="width:30%">项</th><th>要求</th></tr>
+    <tr><td>离线优先 / 弱网</td><td><b>核心功能</b>:在线全功能 / 低带宽自动降级(视频/音频/图片/同步) / 离线下载学习 + 网络恢复自动同步不丢数据。<span class="pill mvp">MVP</span></td></tr>
+    <tr><td>断电适应(<b>非洲版</b>)</td><td>间歇供电环境:自动保存进度/未完成任务、断电恢复、避免数据丢失、减少重复下载。<span class="pill mvp">MVP(非洲)</span></td></tr>
+    <tr><td>低配设备 / 移动优先</td><td>优先入门安卓手机/平板、低配电脑、旧浏览器、有限 RAM/存储;移动优先(PWA / Android App / 二者结合);不得要求高端设备完成核心学习。<span class="pill mvp">MVP</span></td></tr>
+    <tr><td>流量优化</td><td>自适应视频/音频压缩/低清下载/数据节省/后台与选择性同步下载。<span class="pill mvp">MVP</span></td></tr>
+    <tr><td>多国多层级 / 多语言 / 通知</td><td>多国/校/班/时区并管,新增国家不重构;首阶段英文+简体中文,架构支持扩展;通知支持 App/推送/Email/SMS/<span class="fill">[WhatsApp 等]</span>。<span class="pill mvp">MVP</span> / WhatsApp <span class="pill next">后续</span></td></tr>
+  </table>
+
+  <h2 id="f"><span class="n">F</span>数据分析与学习闭环</h2>
+  <ul>
+    <li>四层分析:学习者 / 教师 / 学校 / 国家(全球);报告导出 Excel / CSV / PDF。<span class="pill mvp">MVP</span></li>
+    <li><b>学习闭环:</b>教 → 练 → 测 → 诊断 → 个性化 → 干预 → 再测 → 更新 ILAP → 报告;从"看了多少"走向"学会了什么、下一步学什么"。</li>
+    <li>预警:识别连续缺课/作业未完成/学习下降/进度落后,向教师或管理员推送。<span class="pill mvp">MVP</span></li>
+    <li>HSK 进度与准备度追踪;<b>平台内"准备度/预测"不得表述为官方 HSK 认证或官方成绩</b>。</li>
+  </ul>
+
+  <h2 id="g"><span class="n">G</span>AI 治理与学习者安全</h2>
+  <ul>
+    <li><b>人工监督:</b>AI 分析/建议/辅助,授权教师/管理员保留最终教学判断;可修改/覆盖/纠正/举报/标记 AI 输出;重要 AI 判断不在无人工复核下永久锁定。</li>
+    <li><b>儿童安全:</b>服务未成年人时设 AI 安全护栏,不主动提供不适宜/操纵性/不当情感依赖内容;AI 学习伙伴明确定位为学习工具,非人际关系替代。</li>
+  </ul>
+
+  <h2 id="h"><span class="n">H</span>数据保护与网络安全</h2>
+  <p>按 PSA 附件五(<b>DPA</b>)与属地法(非洲:尼日利亚 NDPA;东南亚:越 PDPD / 印尼 UU PDP / 马 PDPA / 新 PDPA)执行。至少:身份认证、权限与最小权限、传输与存储加密、管理员多重认证、操作日志与审计、数据保留与删除、同意机制;安全开发/漏洞管理/补丁/监控/入侵防护/备份/灾备/事件响应;重大泄露按 DPA 时限通知。<span class="pill mvp">MVP</span></p>
+
+  <h2 id="i"><span class="n">I</span>服务水平与灾备</h2>
+  <p>月度可用率目标 <span class="fill">[99.5%]</span>(不含计划维护);严重/普通故障响应、修复时限、RTO/RPO 见 PSA 附件三。<b>平台故障与"当地互联网/电力中断"分列,不混为同一 SLA 责任</b>(见 PSA 第7条)。自动备份/数据库/内容/配置备份 + 定期恢复测试。</p>
+
+  <h2 id="j"><span class="n">J</span>集成 · 扩展 · 成本 · 搜索</h2>
+  <ul>
+    <li><b>API 集成:</b>标准化安全 API,支持会议平台/WhatsApp/SMS/支付/身份/移动 App/其他教育与分析平台。</li>
+    <li><b>扩展性:</b>架构支持逐步扩展至 <span class="fill">[1,000 / 10,000 / 100,000]</span> 学习者;各规模所需服务器/DB/AI/带宽/存储及成本"以实测与届时报价为准",不因规模增长而重构。<span class="pill poc">待实测</span></li>
+    <li><b>AI 成本控制:</b>模型路由、小模型处理简单任务、Token 优化、缓存、调用量统计;月度 AI 用量与成本报告。<span class="pill mvp">MVP</span></li>
+    <li><b>搜索:</b>全局搜索并遵守权限控制。<span class="pill next">后续</span></li>
+  </ul>
+
+  <h2 id="k"><span class="n">K</span>验收与分阶段</h2>
+  <ul>
+    <li><b>分阶段:</b>第一阶段仅交付上表 <span class="pill mvp">MVP</span> 范围至可用;<span class="pill poc">待PoC</span> 项以试测结论定去留与时点;其余为 <span class="pill next">后续</span>。</li>
+    <li><b>验收(与 PSA 第6条 + 附件四对齐):</b>双方于启动阶段共定验收标准与 UAT 用例,切合属地弱网/(断电)/低配实况。测试至少含:功能、API、集成、网络安全、性能、低带宽、离线、断网恢复、(断电恢复)、低配安卓、AI、AI 错误率/异常输出、UAT。</li>
+    <li><b>技术文档:</b>系统架构、DB 结构、API 文档、管理员/教师/学习者手册、AI 架构与智能体说明、安全/备份/灾备/部署说明。</li>
+  </ul>
+
+  <h2 id="x"><span class="n">X</span>不在本附件处理的事项(指向 PSA)</h2>
+  <div class="note ring"><b>刻意留白 —— 防止技术附件层面改写商务/法律立场。</b>以下由 PSA 统一约定,本技术附件不另立条款:</div>
+  <table>
+    <tr><th style="width:40%">事项</th><th>依据</th></tr>
+    <tr><td>知识产权归属(平台=甲方既有 IP·许可;定制成果收窄)</td><td><b>PSA 第5条</b></td></tr>
+    <tr><td>业务连续性 / 数据可携(<b>不做核心源码托管</b>)</td><td><b>PSA 第10条</b></td></tr>
+    <tr><td>数据所有权与 AI 数据使用限制</td><td><b>PSA 第5、11条 + DPA</b></td></tr>
+    <tr><td>出资 / 费用 / 分成 / 结算</td><td><b>PSA 第8条 + 附件二</b></td></tr>
+    <tr><td>责任限制 / 赔偿 / 保证</td><td><b>PSA 第13-15条</b></td></tr>
+    <tr><td>变更管理(新增功能=加费加期)</td><td><b>PSA 第17条</b></td></tr>
+  </table>
+
+  <div class="foot">山海同文 SHANHAI TONGWEN · GACEE 全球文化教育交流协会 · 技术规格附件(Schedule 1)v0.1 草案骨架 · 不构成法律意见 · noindex</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Technical Specification Annex (Schedule 1) · Phase 1 — Draft Skeleton</title>
+<style>
+:root{--seal:#1F3AA8;--seal-deep:#14205C;--gold:#8A6A1C;--cinnabar:#A83E3E;--good:#2E7D57;--surface:#FFFFFF;--line:#DCE0EA;--mist:#EEF0F5;--ink:#161A24;--soft:#4A5162;--faint:#7A8194;--serif:"Noto Serif SC","Songti SC","Times New Roman",serif;--sans:"Noto Sans SC","PingFang SC","Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--surface:#161C28;--line:#2A3242;--mist:#1B2230;--ink:#E9ECF4;--soft:#AEB6C7;--faint:#7E879B;--seal:#8CA0F0;--seal-deep:#C7D1FA;--gold:#D6B25A;--cinnabar:#E7938C;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--sans);line-height:1.8;font-size:14.5px}
+.doc{max-width:880px;margin:0 auto;background:var(--surface);padding:54px 60px 90px;box-shadow:0 1px 3px rgba(20,25,40,.06),0 10px 40px rgba(20,25,40,.08)}
+.tag{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.draft{border:1px solid color-mix(in srgb,var(--cinnabar) 40%,transparent);background:color-mix(in srgb,var(--cinnabar) 8%,transparent);border-radius:8px;padding:12px 16px;margin:14px 0 22px;font-size:13px;line-height:1.8}
+.draft b{color:var(--cinnabar)}
+h1{font-family:var(--serif);font-weight:700;font-size:22px;line-height:1.3;margin:6px 0 4px;color:var(--seal-deep)}
+.sub{color:var(--soft);font-size:13px;margin:0 0 6px}
+.lang{float:right;font-size:12.5px}.lang a{color:var(--seal);text-decoration:none}
+h2{font-family:var(--serif);font-size:16.5px;color:var(--seal-deep);margin:26px 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+h2 .n{display:inline-block;width:24px;height:24px;line-height:24px;text-align:center;background:var(--seal);color:#fff;border-radius:6px;font-size:13px;margin-right:8px;font-family:var(--sans)}
+p{margin:7px 0}ul{margin:6px 0;padding-left:22px}li{margin:4px 0}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;padding:0 6px;border-radius:4px;white-space:nowrap;border:1px solid;vertical-align:middle}
+.mvp{color:var(--good);border-color:color-mix(in srgb,var(--good) 45%,transparent);background:color-mix(in srgb,var(--good) 8%,transparent)}
+.next{color:var(--gold);border-color:color-mix(in srgb,var(--gold) 45%,transparent);background:color-mix(in srgb,var(--gold) 8%,transparent)}
+.poc{color:var(--cinnabar);border-color:color-mix(in srgb,var(--cinnabar) 45%,transparent);background:color-mix(in srgb,var(--cinnabar) 8%,transparent)}
+table{border-collapse:collapse;width:100%;font-size:12.5px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--mist);font-weight:700}
+.note{background:var(--mist);border-left:3px solid var(--gold);border-radius:8px;padding:10px 15px;margin:12px 0;font-size:13px;color:var(--soft)}
+.note.ring{border-left-color:var(--good)}.note.warn{border-left-color:var(--cinnabar)}.note b{color:var(--ink)}
+.fill{display:inline-block;min-width:80px;border-bottom:1px solid var(--faint);color:var(--soft)}
+.foot{margin-top:36px;border-top:1px solid var(--line);padding-top:12px;font-size:12px;color:var(--faint)}
+.toc-mini{background:var(--mist);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:16px 0;font-size:12.5px;columns:2;column-gap:24px}
+.toc-mini a{color:var(--seal);text-decoration:none;display:block;padding:2px 0}
+@media(max-width:640px){.doc{padding:32px 20px 64px}.toc-mini{columns:1}}
+@media print{@page{size:A4;margin:15mm 14mm 16mm}body{background:#fff;font-size:11px}.doc{box-shadow:none;max-width:none;padding:0}.lang,.toc-mini{display:none}h2{break-after:avoid}table,tr,.note,.draft{break-inside:avoid}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="lang"><a href="/tech-annex-cn">中文 →</a></div>
+  <span class="tag">SHANHAI TONGWEN · GACEE · Technical Specification Annex (draft skeleton)</span>
+  <h1>Technical Specification Annex (Schedule 1) · Phase 1<br><span style="font-size:14px;font-weight:500;color:var(--soft)">技术规格附件 · 第一阶段</span></h1>
+  <p class="sub">Schedule 1 to the Project-Specific Agreement (PSA) · Applies to the Africa and Southeast Asia pilots · v0.1 (draft skeleton, subject to legal & technical finalisation)</p>
+
+  <div class="draft"><b>Draft skeleton — internal & negotiation use.</b> This Annex sets out the <b>functional and technical requirements the Platform is to meet for the Project</b>, as Schedule 1 to the PSA. <b>Important: this Annex only states "what capabilities the Platform provides"; it contains no IP, source-code or data-ownership clauses</b> — those are governed uniformly by the PSA: the <b>Platform is Party A's Background IP provided under a non-transferable licence (PSA cl. 5)</b>; <b>business continuity is delivered by data/content portability, with no core source-code escrow (PSA cl. 10)</b>; data ownership is per the DPA. Features are marked <span class="pill mvp">MVP</span> Phase 1 / <span class="pill next">later</span> / <span class="pill poc">PoC</span> subject to trial results. Square brackets <span class="fill">[ ]</span> require completion.</div>
+
+  <div class="toc-mini">
+    <a href="#a">A. Architecture & modules</a>
+    <a href="#b">B. Roles · profile · content</a>
+    <a href="#c">C. AI capabilities</a>
+    <a href="#d">D. Teaching delivery</a>
+    <a href="#e">E. Non-functional</a>
+    <a href="#f">F. Analytics & learning loop</a>
+    <a href="#g">G. AI governance & safety</a>
+    <a href="#h">H. Data & cyber security</a>
+    <a href="#i">I. Service levels & DR</a>
+    <a href="#j">J. Integration · scale · cost</a>
+    <a href="#k">K. Acceptance & phasing</a>
+    <a href="#x">X. Not addressed here</a>
+  </div>
+
+  <h2 id="a"><span class="n">A</span>Core architecture & functional modules</h2>
+  <p>The Platform is modular, scalable, API-first and cloud-based; modules can be added/replaced/upgraded without re-building the whole system. Phase 1 delivers MVP capability of the following; the rest iterate via PSA change control:</p>
+  <table>
+    <tr><th style="width:60%">Module</th><th>Phase</th></tr>
+    <tr><td>User & identity, school/institution, class/learner, curriculum management</td><td><span class="pill mvp">MVP</span></td></tr>
+    <tr><td>Digital content management (LCMS), assignments & assessment, attendance & participation</td><td><span class="pill mvp">MVP</span></td></tr>
+    <tr><td>AI grading, AI virtual learning companion, AI teacher assistant, personalised learning engine, ILAP engine</td><td><span class="pill mvp">MVP</span></td></tr>
+    <tr><td>Learning analytics, progress reports, engagement & early-warning, online/offline learning</td><td><span class="pill mvp">MVP</span></td></tr>
+    <tr><td>Live-class management, recording & media management</td><td><span class="pill poc">PoC</span></td></tr>
+    <tr><td>Notifications, admin console, data & reporting, permissions & audit, API & third-party integration</td><td><span class="pill mvp">MVP</span></td></tr>
+    <tr><td>AI multi-agent management & governance</td><td><span class="pill mvp">MVP</span></td></tr>
+  </table>
+
+  <h2 id="b"><span class="n">B</span>Roles · learner profile · content</h2>
+  <ul>
+    <li><b>Roles & permissions:</b> learner / teacher / school admin / country (regional) project admin / global project admin / super admin; supports "global → country → institution → school → class → learner" hierarchy. <span class="pill mvp">MVP</span></li>
+    <li><b>Digital learner profile:</b> continuously updated learning profile (particulars, ability dimensions, attendance/assignment/assessment, AI records, engagement, strengths/weaknesses, goals & ILAP, HSK progress), updated dynamically from learning data. <span class="pill mvp">MVP</span></li>
+    <li><b>Content management:</b> course/unit/lesson/objectives/vocab/characters/grammar/listening-speaking-reading-writing/quizzes/assignments/mock exams; mappable to HSK levels and ability indicators; architecture supports HSK updates without a rebuild. <span class="pill mvp">MVP</span></li>
+  </ul>
+
+  <h2 id="c"><span class="n">C</span>AI capabilities</h2>
+  <table>
+    <tr><th style="width:34%">Capability</th><th style="width:12%">Phase</th><th>Notes</th></tr>
+    <tr><td>Personalised engine / ILAP</td><td><span class="pill mvp">MVP</span></td><td>Continuously analyses mastered/unmastered/recurring errors/progress; generates and dynamically adjusts a personalised path and action plan; teacher may view/modify/approve/override</td></tr>
+    <tr><td>AI virtual learning companion</td><td><span class="pill mvp">MVP</span></td><td>Dialogue/vocab/grammar/reading-writing-listening-speaking/scenario/review/quiz; level-adaptive; "hint → guide → example → correct → practise again" pedagogy, not direct answers</td></tr>
+    <tr><td>AI grading</td><td><span class="pill mvp">MVP</span></td><td>Multi-agent grading + review for objective items; score/error-type/explanation/suggestion; teacher may accept/modify/reject with audit trail; complex writing routed to teacher</td></tr>
+    <tr><td>AI speaking & pronunciation</td><td><span class="pill poc">PoC</span></td><td>Speech recognition, tone/pinyin/pronunciation feedback, oral assessment; ASR selection and local/Africa audio path subject to PoC</td></tr>
+    <tr><td>AI characters & writing</td><td><span class="pill next">later</span></td><td>Strokes/stroke-order/writing, handwriting recognition, writing assessment</td></tr>
+    <tr><td>AI teacher assistant / content gen</td><td><span class="pill mvp">MVP</span></td><td>Lesson prep/questions/tiered practice/learner analysis/report drafts; auto-generates targeted practice mapped to ability indicators on detecting weakness</td></tr>
+    <tr><td>AI multi-agent architecture</td><td><span class="pill mvp">MVP</span></td><td>Specialist agents (learner/assessment/course/personalisation/teacher/report/engagement/content/dialogue); <b>each agent has scoped data access, not default full-database access</b></td></tr>
+  </table>
+  <div class="note"><b>Low hallucination.</b> AI outputs are grounded in the Platform's TIDAR-KAG retrieval evidence; memory is retrieval evidence, not fact, reducing hallucination.</div>
+
+  <h2 id="d"><span class="n">D</span>Teaching delivery (live & recordings)</h2>
+  <ul>
+    <li><b>Live classes:</b> integrate with approved third-party meeting platforms (Zoom / Google Meet / <span class="fill">[Voox etc.]</span>); create/schedule/link/notify/attendance/online-time/class-link; semi-automatic attendance where third-party APIs are limited. <span class="pill poc">PoC</span> (cross-border weak-network RTC & local path)</li>
+    <li><b>Recordings:</b> classified/retrievable by country→school→class→course→date→teacher; resume/low-res download/offline viewing; <span class="pill next">later</span> auto-captions/transcript/chapters/content search.</li>
+  </ul>
+
+  <h2 id="e"><span class="n">E</span>Non-functional requirements (core)</h2>
+  <table>
+    <tr><th style="width:30%">Item</th><th>Requirement</th></tr>
+    <tr><td>Offline-first / low-bandwidth</td><td><b>Core</b>: full features online / auto-degrade on low bandwidth (video/audio/image/sync) / offline download-and-learn + auto-sync on reconnection without data loss. <span class="pill mvp">MVP</span></td></tr>
+    <tr><td>Power-outage resilience (<b>Africa</b>)</td><td>Intermittent-power environments: auto-save progress/unfinished tasks, power-loss recovery, avoid data loss, minimise re-downloads. <span class="pill mvp">MVP (Africa)</span></td></tr>
+    <tr><td>Low-spec devices / mobile-first</td><td>Prioritise entry-level Android phones/tablets, low-spec PCs, older browsers, limited RAM/storage; mobile-first (PWA / Android App / both); no high-end device required for core learning. <span class="pill mvp">MVP</span></td></tr>
+    <tr><td>Data-saving</td><td>Adaptive video/audio compression/low-res download/data-saver/background & selective sync & download. <span class="pill mvp">MVP</span></td></tr>
+    <tr><td>Multi-country / multilingual / notifications</td><td>Manage many countries/schools/classes/time-zones concurrently, no rebuild to add a country; Phase 1 English + Simplified Chinese, architecture extensible; notifications via app/push/email/SMS/<span class="fill">[WhatsApp etc.]</span>. <span class="pill mvp">MVP</span> / WhatsApp <span class="pill next">later</span></td></tr>
+  </table>
+
+  <h2 id="f"><span class="n">F</span>Analytics & learning loop</h2>
+  <ul>
+    <li>Four-tier analytics: learner / teacher / school / country (global); export Excel / CSV / PDF. <span class="pill mvp">MVP</span></li>
+    <li><b>Learning loop:</b> teach → practise → assess → diagnose → personalise → intervene → re-assess → update ILAP → report; moving from "how much viewed" to "what was actually learned and what to learn next".</li>
+    <li>Early warning: detect consecutive absence/incomplete assignments/declining activity/behind schedule; alert teacher or admin. <span class="pill mvp">MVP</span></li>
+    <li>HSK progress & readiness tracking; <b>the Platform's "readiness/prediction" must not be represented as official HSK certification or official results</b>.</li>
+  </ul>
+
+  <h2 id="g"><span class="n">G</span>AI governance & learner safety</h2>
+  <ul>
+    <li><b>Human oversight:</b> AI analyses/suggests/assists; authorised teachers/admins retain final teaching judgment; may modify/override/correct/report/flag AI outputs; important AI determinations are not permanently locked without human review.</li>
+    <li><b>Child safety:</b> where minors are served, AI safety guardrails apply; no unsuitable/manipulative/inappropriate-emotional-dependency content; the AI companion is positioned as a learning tool, not a substitute for human relationships.</li>
+  </ul>
+
+  <h2 id="h"><span class="n">H</span>Data protection & cyber security</h2>
+  <p>Per PSA Schedule 5 (<b>DPA</b>) and local law (Africa: Nigeria NDPA; SEA: Vietnam PDPD / Indonesia UU PDP / Malaysia PDPA / Singapore PDPA). At least: authentication, least-privilege access, encryption in transit and at rest, admin MFA, activity logs & audit, retention & deletion, consent; secure development/vulnerability management/patching/monitoring/intrusion protection/backup/DR/incident response; material breaches notified within the DPA time limits. <span class="pill mvp">MVP</span></p>
+
+  <h2 id="i"><span class="n">I</span>Service levels & disaster recovery</h2>
+  <p>Target monthly availability <span class="fill">[99.5%]</span> (excluding planned maintenance); severe/normal fault response, repair times, RTO/RPO per PSA Schedule 3. <b>Platform faults and "local internet/power outages" are treated separately, not as the same SLA responsibility</b> (see PSA cl. 7). Automatic backup / database / content / configuration backup + periodic recovery testing.</p>
+
+  <h2 id="j"><span class="n">J</span>Integration · scale · cost · search</h2>
+  <ul>
+    <li><b>API integration:</b> standardised, secure APIs supporting meeting platforms/WhatsApp/SMS/payment/identity/mobile app/other education & analytics platforms.</li>
+    <li><b>Scalability:</b> architecture supports progressive scaling to <span class="fill">[1,000 / 10,000 / 100,000]</span> learners; servers/DB/AI/bandwidth/storage and cost at each scale "subject to actual testing and a then-current quote", with no rebuild on growth. <span class="pill poc">to test</span></li>
+    <li><b>AI cost control:</b> model routing, small-model-first, token optimisation, caching, call-volume metering; monthly AI usage & cost report. <span class="pill mvp">MVP</span></li>
+    <li><b>Search:</b> global search subject to permission control. <span class="pill next">later</span></li>
+  </ul>
+
+  <h2 id="k"><span class="n">K</span>Acceptance & phasing</h2>
+  <ul>
+    <li><b>Phasing:</b> Phase 1 delivers only the <span class="pill mvp">MVP</span> scope above to a usable standard; <span class="pill poc">PoC</span> items are decided by trial results; the rest are <span class="pill next">later</span>.</li>
+    <li><b>Acceptance (aligned with PSA cl. 6 + Schedule 4):</b> the Parties jointly set acceptance criteria and UAT cases at initiation, fitted to local low-bandwidth/(power-outage)/low-spec realities. Testing includes at least: functional, API, integration, cyber-security, performance, low-bandwidth, offline, network-recovery, (power-recovery), low-spec Android, AI, AI error-rate/anomalous-output, UAT.</li>
+    <li><b>Technical documentation:</b> system architecture, DB schema, API docs, admin/teacher/learner manuals, AI architecture & agent descriptions, security/backup/DR/deployment docs.</li>
+  </ul>
+
+  <h2 id="x"><span class="n">X</span>Not addressed in this Annex (see PSA)</h2>
+  <div class="note ring"><b>Deliberately left out — to prevent a technical annex from rewriting the commercial/legal position.</b> The following are governed uniformly by the PSA; this Annex adds no clause on them:</div>
+  <table>
+    <tr><th style="width:40%">Matter</th><th>Basis</th></tr>
+    <tr><td>IP ownership (Platform = Party A Background IP · licensed; Foreground narrowed)</td><td><b>PSA cl. 5</b></td></tr>
+    <tr><td>Business continuity / data portability (<b>no core source-code escrow</b>)</td><td><b>PSA cl. 10</b></td></tr>
+    <tr><td>Data ownership & AI data-use restrictions</td><td><b>PSA cl. 5, 11 + DPA</b></td></tr>
+    <tr><td>Funding / fees / split / settlement</td><td><b>PSA cl. 8 + Schedule 2</b></td></tr>
+    <tr><td>Limitation of liability / indemnity / warranties</td><td><b>PSA cl. 13-15</b></td></tr>
+    <tr><td>Change control (new features = added fees & time)</td><td><b>PSA cl. 17</b></td></tr>
+  </table>
+
+  <div class="foot">SHANHAI TONGWEN · Global Association of Cultural and Educational Exchange (GACEE) · Technical Specification Annex (Schedule 1) v0.1 draft skeleton · Not legal advice · noindex</div>
+</div>
+</body>
+</html>

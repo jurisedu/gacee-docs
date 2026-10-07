@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>GACEE 数字基础设施与协会 AI 服务平台 · 架构方案</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,500&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{--seal:#1F3AA8;--seal-deep:#14205C;--gold:#B8912F;--paper:#FBFAF6;--surface:#FFFFFF;--surface2:#F4F5F9;--line:#DDE1EA;--slate:#5B6478;--ink:#1B2233;--ok:#2E7D5B;--warn:#B5741E;--risk:#A83E3E}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--seal:#8CA0F0;--seal-deep:#C7D1FA;--gold:#D9B65C;--paper:#0F1424;--surface:#171D33;--surface2:#1E2540;--line:#2B3452;--slate:#A3ACC4;--ink:#E8EBF5;--ok:#5FCf9c;--warn:#E0A54A;--risk:#E88}}
+:root[data-theme="dark"]{--seal:#8CA0F0;--seal-deep:#C7D1FA;--gold:#D9B65C;--paper:#0F1424;--surface:#171D33;--surface2:#1E2540;--line:#2B3452;--slate:#A3ACC4;--ink:#E8EBF5;--ok:#5FCF9C;--warn:#E0A54A;--risk:#E88}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Source Sans 3","Noto Sans SC","Segoe UI",sans-serif;font-size:16px;line-height:1.7}
+main{max-width:1000px;margin:0 auto;padding:64px 24px 96px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:"Noto Serif SC","EB Garamond",serif;font-weight:700;font-size:32px;color:var(--seal-deep);margin:8px 0 6px;text-wrap:balance}
+h1 .en{display:block;font-family:"EB Garamond",serif;font-weight:500;font-style:italic;font-size:18px;color:var(--slate);margin-top:4px}
+h2{font-family:"Noto Serif SC",serif;font-size:22px;color:var(--seal-deep);margin:52px 0 4px;padding-top:14px;border-top:2px solid var(--line)}
+h2 .n{font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--gold);margin-right:10px}
+h3{font-size:17px;color:var(--seal);margin:26px 0 6px}
+p{margin:10px 0}
+p.lede{color:var(--slate);max-width:70ch;margin:0 0 8px}
+a{color:var(--seal)}
+code,.mono{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:var(--surface2);padding:1px 6px;border-radius:4px}
+.decision{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:20px 0 8px}
+.dcard{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--seal);border-radius:6px;padding:14px 16px}
+.dcard .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.dcard .v{font-weight:600;color:var(--seal-deep);margin-top:3px;display:block;font-size:15px}
+.dcard p{font-size:13.5px;color:var(--slate);margin:6px 0 0}
+figure{margin:24px 0;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:12.5px;color:var(--slate);margin-top:10px;text-align:center}
+.tw{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+th{background:var(--surface2);color:var(--seal-deep);font-weight:600;font-size:12.5px}
+td .mono{background:none;padding:0}
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;padding:1px 7px;border-radius:20px;border:1px solid var(--line);color:var(--slate)}
+.tag.reuse{color:var(--ok);border-color:var(--ok)}
+.tag.new{color:var(--seal);border-color:var(--seal)}
+.tag.saas{color:var(--gold);border-color:var(--gold)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:16px 0}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.panel h3{margin-top:0}
+ul.tick{list-style:none;padding:0;margin:8px 0}
+ul.tick li{padding:5px 0 5px 24px;position:relative}
+ul.tick li::before{content:"▸";position:absolute;left:2px;color:var(--gold)}
+.timeline{position:relative;margin:20px 0;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.ph{position:relative;margin:0 0 20px}
+.ph::before{content:"";position:absolute;left:-23px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--seal);border:2px solid var(--paper)}
+.ph .t{font-weight:600;color:var(--seal-deep)}
+.ph .t .dur{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--gold);margin-left:8px}
+.ph p{margin:4px 0 0;font-size:14px;color:var(--slate)}
+.risk{border-left:3px solid var(--risk)}
+.adr{background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:10px 14px;margin:10px 0;font-size:14px}
+.adr b{color:var(--seal-deep)}
+.callout{background:var(--surface2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:6px;padding:12px 16px;margin:16px 0;font-size:14px}
+footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--slate)}
+.crumbs{font-size:13px;color:var(--slate);margin-bottom:18px}
+.crumbs a{text-decoration:none}
+@media(max-width:640px){main{padding:40px 16px 72px}h1{font-size:26px}h2{font-size:19px}}
+</style>
+</head>
+<body>
+<main>
+  <div class="crumbs"><a href="/">← GACEE 文档</a></div>
+  <div class="eyebrow">GACEE · Architecture</div>
+  <h1>数字基础设施与协会 AI 服务平台 · 架构方案<span class="en">Digital Infrastructure &amp; Association AI Platform — Architecture Blueprint</span></h1>
+  <p class="lede">本方案覆盖 GACEE 官网、协会 AI 服务平台（hub.gacee.org）、内部 IM 协作（Mattermost）、系统邮件与平台 AI 的整体架构、选型、部署、成本与实施路线。基础设施与 Juris&amp;Edu 同处阿里云新加坡，以复用换经济、以隔离保产权。</p>
+
+  <h2><span class="n">00</span>决策摘要</h2>
+  <p class="lede">四项关键取向已确认，架构围绕其展开：</p>
+  <div class="decision">
+    <div class="dcard"><span class="k">部署形态</span><span class="v">复用 JE 阿里云集群</span><p>现有新加坡 ACK 加 1 个专属节点 + 独立 namespace / 数据库；共享底层，隔离数据与产权。</p></div>
+    <div class="dcard"><span class="k">IM 协作</span><span class="v">Mattermost 开源自托管</span><p>仅内部团队（≤50 人），im.gacee.org，零许可费、数据自持。</p></div>
+    <div class="dcard"><span class="k">系统邮件</span><span class="v">DirectMail + Alimail</span><p>事务邮件走阿里云邮件推送（子域发信）；人对人邮箱保留 Alimail 免费版。</p></div>
+    <div class="dcard"><span class="k">平台 AI</span><span class="v">独立 JE Agent · 首期即上</span><p>用 JE 代码单独部署一套实例，内容 AI 初审 + 基础项目编排。</p></div>
+  </div>
+
+  <h2><span class="n">01</span>目标与边界</h2>
+  <div class="grid2">
+    <div class="panel"><h3>要打通的五件事</h3><ul class="tick">
+      <li><b>内容中枢</b>：平台作官网 headless CMS，投稿→AI 初审→人工复核→发布→官网实时拉取。</li>
+      <li><b>协作打通</b>：内部团队 IM（Mattermost）与平台身份、通知贯通。</li>
+      <li><b>统一身份</b>：平台为身份中心，一套账号登录平台与 IM。</li>
+      <li><b>统一邮件</b>：验证码 / 通知 / IM 提醒统一走 DirectMail，送达可靠。</li>
+      <li><b>平台 AI</b>：独立 JE Agent 承载内容初审与项目模版化编排。</li>
+    </ul></div>
+    <div class="panel"><h3>明确的边界</h3><ul class="tick">
+      <li><b>与 JE 解耦</b>：仅共享底层基础设施，应用与数据独立（不做 JE 租户）。</li>
+      <li><b>与山海同文分开</b>：learn.gacee.org 独立系统，仅经接口衔接（如统一发证）。</li>
+      <li><b>产权归协会</b>：数据、账户、收款均在协会名下，驻留新加坡。</li>
+      <li><b>不纳入</b>：留学招生托管不进本平台。</li>
+    </ul></div>
+  </div>
+
+  <h2><span class="n">02</span>系统全景</h2>
+  <figure>
+  <svg viewBox="0 0 920 600" role="img" aria-label="GACEE 系统全景架构图">
+    <defs>
+      <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--slate)"/></marker>
+      <style>
+        .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5;rx:8}
+        .lbl{fill:var(--ink);font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600}
+        .sub{fill:var(--slate);font-family:'IBM Plex Mono',monospace;font-size:10px}
+        .zone{fill:none;stroke:var(--seal);stroke-width:1.5;stroke-dasharray:6 4;rx:12}
+        .zlbl{fill:var(--seal);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600}
+        .link{stroke:var(--slate);stroke-width:1.4;fill:none;marker-end:url(#ar)}
+        .accent{fill:var(--seal);opacity:.10}
+        .gold{fill:var(--gold);opacity:.12}
+      </style>
+    </defs>
+
+    <!-- users -->
+    <text x="30" y="30" class="zlbl">用户</text>
+    <rect class="box" x="30" y="40" width="160" height="44"/><text x="42" y="60" class="lbl">内部团队</text><text x="42" y="76" class="sub">秘书处/运营/技术</text>
+    <rect class="box" x="205" y="40" width="150" height="44"/><text x="217" y="60" class="lbl">会员/合作伙伴</text><text x="217" y="76" class="sub">校长/机构</text>
+    <rect class="box" x="370" y="40" width="150" height="44"/><text x="382" y="60" class="lbl">公众/参与者</text><text x="382" y="76" class="sub">访客/报名者</text>
+
+    <!-- DNS -->
+    <rect class="box" x="600" y="40" width="290" height="44"/><text x="612" y="60" class="lbl">Vercel DNS · gacee.org</text><text x="612" y="76" class="sub">NS @ db-agi · 统一解析</text>
+
+    <!-- edge -->
+    <text x="30" y="118" class="zlbl">边缘 / 入口</text>
+    <rect class="box accent" x="30" y="128" width="250" height="56"/><rect class="box" x="30" y="128" width="250" height="56" fill="none"/>
+    <text x="44" y="150" class="lbl">官网 gacee.org</text><text x="44" y="168" class="sub">Next.js · Vercel (sin1) · ISR</text>
+
+    <!-- alicloud zone -->
+    <rect class="zone" x="300" y="110" width="590" height="470"/>
+    <text x="314" y="128" class="zlbl">阿里云 新加坡 · 复用 Juris&amp;Edu ACK（共享节点/ingress/cert-manager/IaC/监控）</text>
+
+    <rect class="box" x="320" y="140" width="250" height="48"/><text x="332" y="162" class="lbl">nginx ingress + cert-manager</text><text x="332" y="178" class="sub">hub / im / ai / verify .gacee.org · LE TLS</text>
+
+    <!-- ns gacee -->
+    <rect x="320" y="205" width="550" height="235" rx="10" fill="var(--seal)" opacity="0.06"/>
+    <rect x="320" y="205" width="550" height="235" rx="10" fill="none" stroke="var(--seal)" stroke-width="1.5"/>
+    <text x="334" y="224" class="zlbl">namespace: gacee　（独立数据 · 独立账号 · NetworkPolicy 隔离）</text>
+
+    <rect class="box" x="338" y="238" width="164" height="70"/><text x="350" y="260" class="lbl">协会平台</text><text x="350" y="277" class="sub">gacee-platform</text><text x="350" y="292" class="sub">Next15+Payload3</text>
+    <rect class="box" x="518" y="238" width="164" height="70"/><text x="530" y="260" class="lbl">JE Agent</text><text x="530" y="277" class="sub">JE 代码·独立实例</text><text x="530" y="292" class="sub">内容初审/项目编排</text>
+    <rect class="box" x="698" y="238" width="156" height="70"/><text x="710" y="260" class="lbl">Mattermost</text><text x="710" y="277" class="sub">Team Edition</text><text x="710" y="292" class="sub">内部 IM</text>
+
+    <!-- data layer -->
+    <text x="338" y="340" class="zlbl">数据层（复用 JE RDS/Redis 实例 · 逻辑隔离）</text>
+    <rect class="box" x="338" y="350" width="164" height="72"/><text x="350" y="372" class="lbl">PostgreSQL</text><text x="350" y="389" class="sub">RDS · 3 库</text><text x="350" y="404" class="sub">platform/mm/agent</text>
+    <rect class="box" x="518" y="350" width="164" height="72"/><text x="530" y="372" class="lbl">Redis</text><text x="530" y="389" class="sub">会话/队列/限流</text><text x="530" y="404" class="sub">独立 db-index</text>
+    <rect class="box" x="698" y="350" width="156" height="72"/><text x="710" y="372" class="lbl">OSS</text><text x="710" y="389" class="sub">媒体/内容/备份</text><text x="710" y="404" class="sub">gacee-assets</text>
+
+    <!-- external saas -->
+    <text x="30" y="470" class="zlbl">外部服务 SaaS</text>
+    <rect class="box gold" x="30" y="480" width="250" height="44"/><rect class="box" x="30" y="480" width="250" height="44" fill="none"/><text x="42" y="500" class="lbl">DirectMail</text><text x="42" y="516" class="sub">系统事务邮件 · mail.gacee.org</text>
+    <rect class="box" x="30" y="532" width="250" height="44"/><text x="42" y="552" class="lbl">Alimail 免费企业邮箱</text><text x="42" y="568" class="sub">人对人 · postmaster+12 邮箱</text>
+    <rect class="box" x="600" y="490" width="130" height="44"/><text x="612" y="510" class="lbl">Stripe</text><text x="612" y="526" class="sub">协会名下收款</text>
+    <rect class="box" x="745" y="490" width="125" height="44"/><text x="757" y="510" class="lbl">Mapbox</text><text x="757" y="526" class="sub">研学地图</text>
+
+    <!-- links -->
+    <path class="link" d="M110,84 L110,128"/>
+    <path class="link" d="M745,84 C650,115 520,120 460,140"/>
+    <path class="link" d="M280,156 C316,190 306,242 338,262"/>
+    <text x="284" y="212" class="sub" fill="var(--gold)">内容 API</text>
+    <path class="link" d="M420,188 L420,238"/>
+    <path class="link" d="M474,188 C548,210 588,216 600,238"/>
+    <path class="link" d="M492,188 C662,208 764,216 776,238"/>
+    <path class="link" d="M400,308 L400,350"/>
+    <path class="link" d="M600,308 L600,350"/>
+    <path class="link" d="M776,308 L776,350"/>
+    <path class="link" d="M338,300 C236,344 200,420 200,478"/>
+    <text x="118" y="452" class="sub" fill="var(--gold)">发信</text>
+    <path class="link" d="M636,440 L652,488"/>
+    <path class="link" d="M812,440 L806,488"/>
+  </svg>
+  <figcaption>官网在 Vercel、平台/AI/IM 在阿里云新加坡 ACK 的 <span class="mono">gacee</span> 命名空间；共享 JE 底层基础设施，数据与运行时隔离。事务邮件统一走 DirectMail。</figcaption>
+  </figure>
+
+  <h2><span class="n">03</span>组件选型</h2>
+  <div class="tw"><table>
+    <thead><tr><th>层</th><th>组件</th><th>选型</th><th>部署位置</th><th>状态</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>官网</td><td>gacee-site</td><td class="mono">Next.js</td><td>Vercel · sin1</td><td><span class="tag reuse">复用</span></td><td>已在线；静态/ISR、全球边缘、零运维；改为消费平台内容 API</td></tr>
+      <tr><td>平台</td><td>gacee-platform</td><td class="mono">Next15 + Payload3 + PG</td><td>ACK · ns gacee</td><td><span class="tag new">骨架已建</span></td><td>Payload 一体化：headless CMS + Admin + RBAC，省一个后端</td></tr>
+      <tr><td>AI</td><td>JE Agent</td><td class="mono">JE 代码 (Go) · 独立实例</td><td>ACK · ns gacee</td><td><span class="tag new">新部署</span></td><td>同源代码独立部署，数据/运行时隔离；内容初审 + 项目编排</td></tr>
+      <tr><td>IM</td><td>Mattermost</td><td class="mono">Team Edition 开源</td><td>ACK · ns gacee</td><td><span class="tag new">新部署</span></td><td>自托管零许可费、数据自持；内部规模足够</td></tr>
+      <tr><td>数据库</td><td>PostgreSQL</td><td class="mono">复用 JE RDS · 3 database</td><td>RDS · sin1</td><td><span class="tag reuse">复用</span></td><td>独立库+独立账号逻辑隔离，边际成本近零；量增再拆实例</td></tr>
+      <tr><td>缓存</td><td>Redis</td><td class="mono">复用 JE Redis</td><td>sin1</td><td><span class="tag reuse">复用</span></td><td>会话 / 队列 / 限流，独立 db-index</td></tr>
+      <tr><td>对象存储</td><td>OSS</td><td class="mono">bucket gacee-assets</td><td>OSS · sin1</td><td><span class="tag new">新建</span></td><td>Payload 媒体（S3 兼容 adapter）、内容附件、备份归档</td></tr>
+      <tr><td>邮件·系统</td><td>DirectMail</td><td class="mono">阿里云邮件推送</td><td>SaaS · 同区</td><td><span class="tag saas">接入</span></td><td>事务邮件送达率高、有免费额度、按量便宜</td></tr>
+      <tr><td>邮件·人用</td><td>Alimail</td><td class="mono">企业邮箱免费版</td><td>SaaS</td><td><span class="tag reuse">复用</span></td><td>已在线，postmaster + 12 邮箱人对人</td></tr>
+      <tr><td>支付/地图</td><td>Stripe / Mapbox</td><td class="mono">SaaS</td><td>SaaS</td><td><span class="tag saas">已定</span></td><td>协会名下收款；研学地图（报名/缴费/导览）</td></tr>
+      <tr><td>入口/证书</td><td>ingress + cert-manager</td><td class="mono">nginx + LE</td><td>ACK</td><td><span class="tag reuse">复用</span></td><td>新增 hosts，Let's Encrypt 自动签发</td></tr>
+      <tr><td>IaC/监控/成本</td><td>Terraform 等</td><td class="mono">扩展 JE 栈</td><td>—</td><td><span class="tag reuse">复用</span></td><td>复用成熟 IaC、observability、cost-control</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2><span class="n">04</span>部署与隔离</h2>
+  <div class="grid2">
+    <div class="panel"><h3>复用而隔离</h3><ul class="tick">
+      <li>JE 现有 ACK <b>加 1 个专属工作节点</b>承载 gacee 三个工作负载（集群此前已"单节点满"，<b>不硬塞</b>）。</li>
+      <li>独立 <span class="mono">namespace: gacee</span> + NetworkPolicy 限制跨 ns 流量。</li>
+      <li>RDS 同实例、<b>独立 database + 独立账号</b>（platform / mattermost / agent），禁跨库外键。</li>
+      <li>Redis 独立 db-index / key 前缀；OSS 独立 bucket。</li>
+      <li>机密走 K8s Secret（复用 JE KMS 模式；注意生产 <span class="mono">APP_ENV</span> 留空的既定约定）。</li>
+    </ul></div>
+    <div class="panel"><h3>入口与发布</h3><ul class="tick">
+      <li>Ingress hosts：<span class="mono">hub</span>（平台）·<span class="mono">im</span>（Mattermost）·<span class="mono">ai</span>（Agent，可仅内网）·<span class="mono">verify</span>（发证验真，二期）。</li>
+      <li>TLS：cert-manager + Let's Encrypt 自动签发。</li>
+      <li>镜像：<b>sha 不可变镜像 + canary/GA 门禁</b>（复用 JE 发布纪律）。</li>
+      <li>Payload 自托管：standalone Next 输出 + 外部 PG 连接池 + 媒体走 OSS adapter；<span class="mono">vercel.json</span> 仅留给官网。</li>
+    </ul></div>
+  </div>
+
+  <h2><span class="n">05</span>身份与统一登录</h2>
+  <p>平台（gacee-platform）为<b>身份中心</b>：会员、角色与认证态集中于此（10 角色 × 认证 × 可见性 RBAC 已在骨架 <span class="mono">rbac.ts</span>）。登录 = 邮箱 + 密码 + 邮箱验证码（验证码经 DirectMail 下发）。</p>
+  <div class="callout"><b>Mattermost SSO 的现实约束：</b>开源 Team Edition 仅内建 <b>GitLab OAuth2</b> 一种第三方登录。打通路径：平台对外暴露一组 <b>GitLab 兼容的 OAuth2 端点</b>（authorize / token / user），Mattermost 指向它即可一套账号登录。首期内部 ≤50 人也可先用 Mattermost 本地账号 + DirectMail 邀请，SSO 作为紧接增强；未来平台升级为标准 OIDC IdP，供更多系统统一登录（阶段 2）。</div>
+
+  <h2><span class="n">06</span>邮件架构</h2>
+  <div class="grid2">
+    <div class="panel"><h3>系统事务 · DirectMail</h3><ul class="tick">
+      <li>专用发信子域 <span class="mono">mail.gacee.org</span>，<b>避开主域 Alimail 的收信 MX</b>。</li>
+      <li>Vercel DNS 配 DirectMail 的 SPF / DKIM / MX(退信) / CNAME 校验。</li>
+      <li>统一发信服务：平台 mailer、Mattermost SMTP、Agent 通知都指向 DirectMail 新加坡节点 <span class="mono">smtpdm-ap-southeast-1.aliyuncs.com:465</span>。</li>
+      <li>用途：注册验证码、审批/对接通知、IM 提醒、结算回执。</li>
+    </ul></div>
+    <div class="panel"><h3>人对人 · Alimail（保留）</h3><ul class="tick">
+      <li>postmaster + 12 个成员邮箱不变；<span class="mono">info@</span> 收官网联络。</li>
+      <li>免费版个人 SMTP <b>不承担系统群发</b>（频率上限 / 送达风险）。</li>
+      <li>主域 DMARC 现 <span class="mono">p=none</span>；子域发信对齐后逐步收紧至 quarantine。</li>
+    </ul></div>
+  </div>
+
+  <h2><span class="n">07</span>平台 AI（独立 JE Agent）</h2>
+  <p>用 jurisedu 的 Agent 代码构建<b>独立镜像</b>，部署于 <span class="mono">ns gacee</span>，配<b>独立数据库与配置</b>，不依赖 JE 任何在线服务——即"同源代码、独立部署，数据与运行时隔离"。</p>
+  <div class="grid2">
+    <div class="panel"><h3>首期能力</h3><ul class="tick">
+      <li><b>内容投稿 AI 初审</b>：合规敏感筛查 / 润色纠错 / 事实标注 / 分类打标摘要，接入 Payload 投稿工作流（投稿→AI 初审→人工复核→发布→官网拉取）。</li>
+      <li><b>基础项目模版化编排</b>：研学等项目一键生成多语招生文案与素材草稿 → 人审。</li>
+    </ul></div>
+    <div class="panel"><h3>二期深化</h3><ul class="tick">
+      <li>AI 宣传视频、社媒素材成套生成。</li>
+      <li>报名+收费+触达全流程编排，数据回流。</li>
+      <li>TIDAR KAG 低幻觉问答（资源/项目知识库）。</li>
+    </ul></div>
+  </div>
+
+  <h2><span class="n">08</span>成本估算</h2>
+  <p class="lede">阿里云新加坡、<b>边际</b>月度近似（复用 JE 现有 RDS/Redis/ingress/监控）。软件均开源或自有代码，无许可费。</p>
+  <div class="tw"><table>
+    <thead><tr><th>项目</th><th>规格</th><th>月度（约）</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>ACK 工作节点 ×1</td><td class="mono">ecs.g6 4C8G（包年折算）</td><td>$55–85</td><td>承载平台+Agent+Mattermost；主要新增成本</td></tr>
+      <tr><td>PostgreSQL</td><td class="mono">复用 JE RDS + 3 库</td><td>~$0</td><td>边际近零；量增再拆独立实例</td></tr>
+      <tr><td>Redis</td><td class="mono">复用 JE 实例</td><td>~$0</td><td>独立 db-index</td></tr>
+      <tr><td>OSS + 流量</td><td class="mono">按量</td><td>$5–15</td><td>媒体 + 备份归档</td></tr>
+      <tr><td>DirectMail</td><td class="mono">免费额度 / 少量按量</td><td>$0–8</td><td>事务邮件量小</td></tr>
+      <tr><td>SLB / EIP 带宽</td><td class="mono">复用 JE ingress / 按量</td><td>$0–10</td><td>视公网流量</td></tr>
+      <tr><td>Mattermost / Payload / Agent</td><td class="mono">开源 / 自有代码</td><td>$0</td><td>无许可费</td></tr>
+      <tr><td style="font-weight:600">合计边际</td><td></td><td style="font-weight:600;color:var(--seal-deep)">≈ $60–120 / 月</td><td>起步复用最省；拆独立 RDS/集群则升至稳健档</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:13px;color:var(--slate)">＊为区间估算，非报价；实际以阿里云新加坡当期价格与用量为准，包年与资源包可再降。LLM 推理（JE Agent 调用模型）按 token 另计，属可变成本。</p>
+
+  <h2><span class="n">09</span>实施路线图</h2>
+  <div class="timeline">
+    <div class="ph"><div class="t">Phase 0 · 基础设施打底<span class="dur">~1 周</span></div><p>Terraform 扩展：+节点、namespace、3 库+账号、OSS bucket、DirectMail 发信域与 DNS；容器化 gacee-platform（Dockerfile + Payload 自托管适配 + OSS adapter）；CI/CD（sha 镜像，复用 JE Actions）；ingress hosts + 证书。</p></div>
+    <div class="ph"><div class="t">Phase 1 · 平台 MVP 上线<span class="dur">~2–3 周</span></div><p>Payload 内容中枢（投稿/审核/发布）+ 官网 headless 对接（gacee-site 改拉平台内容 API，ISR）+ 会员注册登录（邮箱+密码+验证码 via DirectMail）+ 核心 RBAC，<span class="mono">hub.gacee.org</span> 上线。</p></div>
+    <div class="ph"><div class="t">Phase 2 · IM 打通<span class="dur">~1–2 周</span></div><p>Mattermost 部署 <span class="mono">im.gacee.org</span> + DirectMail 通知 + 内部团队/频道结构（秘书处/运营/技术/项目组）+ SSO（GitLab 兼容 OAuth 接平台）。</p></div>
+    <div class="ph"><div class="t">Phase 3 · AI 服务首发<span class="dur">~2–3 周</span></div><p>独立 JE Agent 部署 + 内容 AI 初审接入投稿流水线 + 基础项目模版化编排（1 个研学项目模板试点）。</p></div>
+    <div class="ph"><div class="t">Phase 4+ · 业务模块迭代<span class="dur">持续</span></div><p>研学地图（Mapbox 报名/缴费）、统一发证验真（verify.gacee.org）、商业 BI、供应链/财务/资产中枢——按《协会平台规划纲要》推进。</p></div>
+  </div>
+
+  <h2><span class="n">10</span>安全 · 合规 · 运维</h2>
+  <div class="grid2">
+    <div class="panel"><h3>安全与合规</h3><ul class="tick">
+      <li>数据驻留全部阿里云新加坡，与 JE 一致；产权在协会名下。</li>
+      <li>隔离：独立库/账号/namespace/NetworkPolicy；接口而非直连 JE。</li>
+      <li>全站 HTTPS（cert-manager + LE）；机密 K8s Secret + KMS 模式。</li>
+      <li>跨云 API（官网↔平台）：CORS 白名单 <span class="mono">gacee.org</span> + ISR 缓存 + 失败降级。</li>
+    </ul></div>
+    <div class="panel"><h3>备份与运维</h3><ul class="tick">
+      <li>RDS 自动备份（PITR）；Mattermost 库每日逻辑备份 → OSS；OSS 版本+生命周期。</li>
+      <li>季度恢复演练。</li>
+      <li>监控复用 JE observability（指标/日志/告警）；成本纳入 cost-control。</li>
+      <li>发布 sha 不可变镜像 + canary/GA；单节点承载期后端发布 <span class="mono">maxSurge:0</span>。</li>
+    </ul></div>
+  </div>
+
+  <h2><span class="n">11</span>关键风险与对策</h2>
+  <div class="grid2">
+    <div class="panel risk"><h3>基础设施</h3><ul class="tick">
+      <li><b>JE 集群"单节点满"</b> → 必须加专属节点，禁硬塞；gacee 负载设 requests/limits + 亲和隔离。</li>
+      <li><b>Payload 3 自托管</b>（非 Vercel）→ standalone + 外部 PG 连接池 + OSS 媒体；vercel.json 仅官网用。</li>
+    </ul></div>
+    <div class="panel risk"><h3>集成</h3><ul class="tick">
+      <li><b>Mattermost 开源 SSO 仅 GitLab</b> → 平台出 GitLab 兼容 OAuth；或首期本地账号，SSO 紧随。</li>
+      <li><b>DirectMail 与 Alimail 域冲突</b> → 发信用子域 <span class="mono">mail.gacee.org</span>，收信 MX 留主域；SPF/DKIM 分域对齐。</li>
+      <li><b>跨云 CORS/缓存</b> → 平台内容 API 经 ingress 公网可达 + 白名单 + ISR + 快照降级。</li>
+    </ul></div>
+  </div>
+
+  <h2><span class="n">12</span>决策记录 ADR</h2>
+  <div class="adr"><b>ADR-G1</b> · 复用 JE ACK + 数据隔离（而非独立集群或单机）——经济与专业兼顾，产权边界清晰。</div>
+  <div class="adr"><b>ADR-G2</b> · Mattermost Team Edition 自托管——零许可、数据自持，内部规模足够。</div>
+  <div class="adr"><b>ADR-G3</b> · DirectMail 子域发信 + Alimail 人用——送达率与省钱兼顾，互不干扰。</div>
+  <div class="adr"><b>ADR-G4</b> · 独立 JE Agent 同源部署——AI 能力复用 + 数据/运行时隔离。</div>
+  <div class="adr"><b>ADR-G5</b> · 平台为身份中心，Mattermost 经 OAuth 接入——统一登录路径。</div>
+
+  <h2><span class="n">13</span>下一步</h2>
+  <p class="lede">建议从 <b>Phase 0</b> 起步：先把 <span class="mono">gacee-platform</span> 容器化并接通阿里云新加坡（节点/命名空间/数据库/OSS/DirectMail 域名），跑通 <span class="mono">hub.gacee.org</span> 的空壳部署与 CI/CD，再进入 Phase 1 的内容中枢与会员登录。每阶段以可上线、可回滚为门禁。</p>
+
+  <footer>GACEE 全球文化教育交流协会 · 架构方案 v0.1 · 2026-09 · 内部与合作方参考，未在官网公开 · 数字基础设施与 Juris&amp;Edu 同区（阿里云新加坡），复用换经济、隔离保产权</footer>
+</main>
+</body>
+</html>

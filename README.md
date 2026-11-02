@@ -1,11 +1,10 @@
 # gacee-docs
 
-Static documents for **SHANHAI TONGWEN (山海同文)** — the master brand of the association, run by **GACEE**, the Global Association of Cultural and Educational Exchange. Deployed with Vercel to **docs.gacee.org**. Documents are marked `noindex`; links are unlisted but reachable by anyone holding the URL.
+GACEE（全球文化教育交流协会）手册站，部署于 **docs.gacee.org**（Vercel，`noindex`）。
 
-- `brand-guidelines.html` — 山海同文 SHANHAI TONGWEN Brand Book (master brand · v2.0)
-- `platform-plan.html` — 协会平台规划纲要 · Platform Plan (v0.7)
-- `shanhai-plan.html` — 山海同文 Delivery Plan · 中英双语 (v3.0)
-- `shanhai-dev-plan.html` — 山海同文 Engineering Delivery Plan (v1.0)
-- `index.html` — document index
+**只收录品牌手册与产品使用手册，不放方案、协议、计划等文件。**
 
-Master brand: 山海同文 · SHANHAI TONGWEN · **ONE WORLD, ONE VERSE**. GACEE is the organizing / endorsing association.
+- `brand-guidelines.html` — GACEE 品牌识别手册 v3.0（2026-11）
+- `brand-guidelines-v2.html` — 品牌手册 v2.0（归档）
+- `assets/brand/` — 印章标准版 / 反白版 / 单黑版 SVG、PNG，中心图形
+- `index.html` — 手册目录
